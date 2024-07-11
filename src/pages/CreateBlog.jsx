@@ -1,9 +1,15 @@
 import React from 'react'
+import Chatbot from '../components/Chatbot'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const CreateBlog = () => {
   return (
     <div>
-      Create Blog
+      <Chatbot />
+      <Header />
+      Componenet Here
+      <Footer />
     </div>
   )
 }
