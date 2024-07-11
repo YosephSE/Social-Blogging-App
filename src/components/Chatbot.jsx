@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import chatbot from "../assets/chatbot.png";
+import { Link } from "react-router-dom";
 
 const Chatbot = () => {
   return (
     <div>
-      
+      <Link to="https://chatgpt.com">
+        <img
+          src={chatbot}
+          alt="Fixed Image"
+          className="fixed bottom-1 right-1 w-16 h-16"
+        />
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Chatbot
+export default Chatbot;

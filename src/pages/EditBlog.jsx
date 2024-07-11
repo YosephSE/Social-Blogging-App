@@ -1,9 +1,13 @@
 import React from 'react'
+import Chatbot from '../components/Chatbot'
 
 const EditBlog = () => {
   return (
     <div>
-      Edit
+      <Chatbot />
+      <Header />
+      Componenet Here
+      <Footer />
     </div>
   )
 }
