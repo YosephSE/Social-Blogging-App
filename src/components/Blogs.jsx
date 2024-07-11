@@ -1,5 +1,5 @@
 import React from "react";
-import AI from "../assets/AI.png";
+import AI from "../assets/ai.png";
 import author from "../assets/author.png";
 import comment from "../assets/comment.png";
 import like from "../assets/like.png";
@@ -7,8 +7,8 @@ import bookmark from "../assets/bookmark1.png";
 
 function Blogs() {
   return (
-    <div className="blogs grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-400 px-2 md:px-8 md:py-3 py-1">
-      <div className="blog bg-gray-200 p-3 rounded-3xl">
+    <div className="blogs grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-300 px-2 md:px-8 md:py-3 py-1">
+      <div className="blog bg-white p-3 rounded-3xl">
         <img src={AI} alt="Blog Img" className="rounded-3xl" />
         <div className="title text-xl font-bold pt-4 text-justify">
           The Future of AI: Trends You Need To Know About
