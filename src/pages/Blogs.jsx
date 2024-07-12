@@ -6,7 +6,7 @@ import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
 
 const Blogs = () => {
-  let users = data.users;
+  let users = data.posts;
   return (
     <>
       <Header />
@@ -17,11 +17,11 @@ const Blogs = () => {
         {users.map((user) => (
           <Blog
             name={user.name}
-            key={user.posts[0].id}
-            title={user.posts[0].title}
-            category={user.posts[0].category}
-            body={user.posts[0].body}
-            img={user.posts[0].img}
+            key={user.id}
+            title={user.title}
+            category={user.category}
+            body={user.body}
+            // img={user.posts[0].img}
           />
         ))}
       </div>

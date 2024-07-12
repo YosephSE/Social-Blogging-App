@@ -2,6 +2,7 @@ let data = {
     "posts": [
       {
         "id": "2",
+        "name": "whatever",
         "title": "Healthy Eating Tips",
         "category": "Health",
         "img": "https://example.com/img2.jpg",

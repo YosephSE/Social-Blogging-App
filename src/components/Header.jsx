@@ -1,5 +1,4 @@
 import React from 'react';
-import home from "../assets/Home.png"
 import search from "../assets/search.png"
 import { Link } from 'react-router-dom';
 import home from '../assets/home.png'

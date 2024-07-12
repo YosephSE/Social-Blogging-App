@@ -11,10 +11,11 @@ import Profile from "./pages/Profile";
 import data  from "../data";
 
 function App() {
-  const[userData, setUserData] = useState(JSON.parse(localStorage.getItem)||{})
-  useEffect(() => (
-    localStorage.setItem(JSON.stringify(userData))
-  ),[userData])
+
+  const[userData, setUserData] = useState({})
+  // useEffect(() => (
+  //   localStorage.setItem(JSON.stringify(userData))
+  // ),[userData])
 
   return (
     <Router>
