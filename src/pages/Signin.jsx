@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 function Signin() {
   const [email, setEmail] = useState('');
@@ -18,6 +19,8 @@ function Signin() {
   };
 
   return (
+    <>
+    <Header/>
     <div className="flex items-center justify-center min-h-screen bg-gray-200 w-full">
       <div className="w-full max-w-xs">
         <form className="rounded px-8 pt-6 pb-8 mb-4 ">
@@ -63,6 +66,7 @@ function Signin() {
         </form>
       </div>
     </div>
+    </>
   );
 }
 
