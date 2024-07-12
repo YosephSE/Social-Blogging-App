@@ -12,22 +12,29 @@ import data  from "../data";
 
 function App() {
 
-  const[userData, setUserData] = useState({})
-  // useEffect(() => (
-  //   localStorage.setItem(JSON.stringify(userData))
-  // ),[userData])
+  const[userData, setUserData] = useState({
+    users: JSON.parse(localStorage.getItem("users")) || data.users,
+    posts: JSON.parse(localStorage.getItem("posts")) || data.posts,
+    session: JSON.parse(localStorage.getItem("session")) || data.session
+  })
+
+  useEffect(() => {
+     localStorage.setItem("users", JSON.stringify(userData.users))
+     localStorage.setItem("posts", JSON.stringify(userData.posts))
+     localStorage.setItem("session", JSON.stringify(userData.session))
+  },[userData])
 
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Blogs data = {userData} handleChange = {setUserData}/>} />
-          <Route path="/createblog" element={<CreateBlog data = {userData.posts} handleChange = {setUserData} />} />
-          <Route path="/editblog" element={<EditBlog data = {userData} handleChange = {setUserData} />} />
-          <Route path="/authors" element={<Authors data = {userData.users} handleChange = {setUserData}/>} />
-          <Route path="/signin" element={<Signin data = {userData} handleChange = {setUserData}/>} />
-          <Route path="/signup" element={<Signup data = {userData} handleChange = {setUserData}/>} />
-          <Route path="/myposts" element={<MyPosts data = {userData} handleChange = {setUserData}/>} />
-          <Route path="/profile" element={<Profile data = {userData} handleChange = {setUserData}/>} />
+          <Route path="/" element={<Blogs />} />
+          <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
+          <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
+          <Route path="/authors" element={<Authors data = {userData}/>} />
+          <Route path="/signin" element={<Signin/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/myposts" element={<MyPosts/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
     </Router>
   );

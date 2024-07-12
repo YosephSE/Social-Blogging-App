@@ -3,14 +3,17 @@ import ReactMde from "react-mde";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-
+import { nanoid } from "nanoid";
 
 const CreateBlog = (props) => {
     const navigate = useNavigate()
     const [postData, setPostData] = useState({
+        name:props.data,
+        id: nanoid(),
         title: "",
         category: "",
-        body: ""
+        img:"",
+        body: "",
     })
 
     function handleChange(event){
@@ -29,9 +32,15 @@ const CreateBlog = (props) => {
     }
 
     function sumbit(){
+        props.dataChange(prevState =>(
+            {
+                ...prevState,
+                posts:[...prevState.posts, postData]
+            }
+        ))
         navigate('/myposts')
     }
-    
+
     return (
         <>
             <Header />
@@ -44,9 +53,9 @@ const CreateBlog = (props) => {
                         className="block p-2 w-full rounded-md mt-4"
                         onChange={handleChange}
                         name = "title"
-                        value={props.data[0].title}
+                        value={postData.title}
                     />
-                    <select name="category" onChange={handleChange} value={props.data[0].category} className="w-full p-2 my-4 rounded-md">
+                    <select name="category" onChange={handleChange} value={postData.category} className="w-full p-2 my-4 rounded-md">
                         <option value="technology">Technology</option>
                         <option value="Art">Art</option>
                         <option value="Education">Education</option>
@@ -57,7 +66,7 @@ const CreateBlog = (props) => {
                         <option value="uncatagorized">Uncatagorized</option>
                     </select>
                     <ReactMde
-                        value={props.data[0].body}
+                        value={postData.body}
                         minPreviewHeight={20}
                         minEditorHeight={20}
                         heightUnits="vh"
