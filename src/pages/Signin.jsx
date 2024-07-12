@@ -13,11 +13,15 @@ function Signin() {
     const user = users.find(user => user.email === email && user.password === password);
     if (user) {
       navigate('/');
+      const session = { 
+        name: user.name
+      }
+      localStorage.setItem("session", JSON.stringify(session))
+
     } else {
       setError('Invalid email or password');
     }
   };
-
   return (
     <>
     <Header/>
