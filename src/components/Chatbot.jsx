@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Chatbot = () => {
   return (
     <div>
-      <Link to="https://chatgpt.com">
+      <Link target="_blank" to="https://chatgpt.com">
         <img
           src={chatbot}
           alt="Fixed Image"

@@ -10,7 +10,7 @@ const MyPosts = () => {
   return (
     <div className="bg-gray-100">
       <Chatbot />
-      <Header />
+      {/* <Header /> */}
       {posts.map(post => (
         <MyPost body={post.body} category={post.category} img={post.img} name={post.name} title={post.title} key={post.id}/>
       ))}
