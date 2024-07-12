@@ -1,11 +1,10 @@
 import React from "react";
 import author from "../assets/author.png";
-import data from "../../data"
 
-function MyPost() {
+function MyPost({title, img}) {
   return (
-    <div className="flex justify-center items-center">
-      <div className="bg-white flex mx-3 my-2 rounded-xl sm:w-4/5 md:w-3/5 lg:w-1/2">
+    <div className="flex justify-center items-center m-3 ">
+      <div className="bg-black flex mx-3 my-2 rounded-xl sm:w-4/5 md:w-3/5 lg:w-1/2">
         <img
           className="h-20 w-24 mx-4 my-3 rounded-lg "
           src={author}
@@ -13,7 +12,7 @@ function MyPost() {
         />
         <div className="flex items-center">
           <p className="title p-3 font-semibold cursor-pointer items-center">
-            The Evolution of Rock Music from the 50s to Now
+            {title}
           </p>
         </div>
         <div className="buttons flex flex-wrap">
