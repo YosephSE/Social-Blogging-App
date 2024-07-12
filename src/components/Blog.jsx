@@ -3,7 +3,7 @@ import author from "../assets/author.png";
 import comment from "../assets/comment.png";
 import like from "../assets/like.png";
 import bookmark from "../assets/bookmark1.png";
-import ai from "../assets/ai.png"
+import ai from "../assets/AI.png"
 
 function Blog(props) {
   return (
