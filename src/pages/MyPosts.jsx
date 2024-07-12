@@ -6,12 +6,20 @@ import Footer from "../components/Footer";
 import data from "../../data";
 
 const MyPosts = () => {
-  let posts = data.posts;
+  let user = (JSON.parse(localStorage.getItem("session"))).name
+  let posts = JSON.parse(localStorage.getItem("posts"))
+  let myPosts = []
+  for(let post of posts){
+    if(post.name === user){
+      myPosts.push(post)
+    }
+  }
+
   return (
     <div className="bg-gray-100">
       <Chatbot />
       <Header />
-      {posts.map(post => (
+      {myPosts.map(post => (
         <MyPost body={post.body} category={post.category} img={post.img} name={post.name} title={post.title} key={post.id}/>
       ))}
       
