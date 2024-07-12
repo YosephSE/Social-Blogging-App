@@ -12,6 +12,7 @@ let data = {
       {
         "id": "3",
         "name": "David Lee",
+
         "title": "Travel Guide to Paris",
         "category": "Travel",
         "img": "https://example.com/img3.jpg",
@@ -19,6 +20,7 @@ let data = {
       },
       {
         "id": "5",
+
         "name": "Jane Smith",
         "title": "Financial Planning 101",
         "category": "Finance",
@@ -28,6 +30,7 @@ let data = {
       {
         "id": "4",
         "name": "David Lee",
+
         "title": "DIY Home Decor",
         "category": "Lifestyle",
         "img": "https://example.com/img4.jpg",
@@ -61,6 +64,7 @@ let data = {
         "profilePicture": "https://imagetolink.com/ib/IdNTuyJJbI.png",
       }
     ],
+
     "session":{
       "name":"John Doe",
       "postId":""
