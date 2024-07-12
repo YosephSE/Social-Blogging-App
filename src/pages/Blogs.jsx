@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Blog from "../components/Blog";
-import data from "../../data";
 import Header from "../components/Header";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
 
 const Blogs = () => {
-  let users = data.users;
+  let posts = JSON.parse(localStorage.getItem("posts")) || []
   return (
     <>
       <Header />
@@ -14,14 +13,14 @@ const Blogs = () => {
       
       
       <div className="blogs grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-300 px-2 md:px-8 md:py-3 py-1">
-        {users.map((user) => (
+        {posts.map((post) => (
           <Blog
-            name={user.name}
-            key={user.posts[0].id}
-            title={user.posts[0].title}
-            category={user.posts[0].category}
-            body={user.posts[0].body}
-            img={user.posts[0].img}
+            name={post.name}
+            key={post.id}
+            title={post.title}
+            category={post.category}
+            body={post.body}
+            img={post.img}
           />
         ))}
       </div>

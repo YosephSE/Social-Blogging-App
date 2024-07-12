@@ -1,5 +1,5 @@
 import React from "react";
-import author from "../assets/author.png";
+import author from "../assets/image.png";
 import comment from "../assets/comment.png";
 import liked from "../assets/like.png";
 import notLiked from "../assets/like1.png";
@@ -30,7 +30,15 @@ function Blog(props) {
          {props.body}
         </div>
         <div className="author flex py-3">
-            <img src={author} alt="author profile" className="w-16 rounded-lg" />
+        <img
+      src={props.img}
+      alt="author profile"
+      className="w-16 rounded-lg h-16"
+      onError={(e) => {
+        e.target.onerror = null; // Prevents infinite loop if default image also fails
+        e.target.src = author;
+      }}
+    />
             <div className="author-detail">
                 <div className="author-name font-bold px-3">{props.name}</div>
                 <div className="date px-3">50 days ago</div>
