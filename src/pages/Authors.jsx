@@ -1,16 +1,28 @@
 import React from 'react'
-import Chatbot from '../components/Chatbot'
+import Author from '../components/Author'
+import personData from '../../data'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 
 const Authors = () => {
-  return (
-    <div>
-      <Header/>
-      <Chatbot />
-      Authors
-      <Footer />
-    </div>
+  const person = personData.users.map(data => (
+    <Author
+        key = {data.name}
+        name = {data.name}
+        img={data.profilePicture} 
+        post= {data.posts.length}
+    />
+  ))
+
+  console.log(person)
+  return(
+    <>
+      <Header />
+      <div className="bg-[#cccccc] min-h-screen">
+          <div className=" grid gap-4 py-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl m-auto">
+              {person}
+          </div>
+      </div>
+    </>
   )
 }
 
