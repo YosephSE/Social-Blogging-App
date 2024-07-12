@@ -22,8 +22,16 @@ function Signup() {
       password,
     };
 
-    localStorage.setItem('session', JSON.stringify(userData));
-    navigate('/');
+  
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    
+    users.push(userData);
+
+  
+    localStorage.setItem('users', JSON.stringify(users));
+
+    navigate('/signin');
   };
 
   return (
