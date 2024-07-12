@@ -2,7 +2,7 @@ let data = {
     "posts": [
       {
         "id": "2",
-        "name": "whatever",
+        "name": "David Lee",
         "title": "Healthy Eating Tips",
         "category": "Health",
         "img": "https://example.com/img2.jpg",
@@ -11,7 +11,8 @@ let data = {
       
       {
         "id": "3",
-        "name": "whatever",
+        "name": "David Lee",
+
         "title": "Travel Guide to Paris",
         "category": "Travel",
         "img": "https://example.com/img3.jpg",
@@ -19,7 +20,8 @@ let data = {
       },
       {
         "id": "5",
-        "name": "whatever",
+
+        "name": "Jane Smith",
         "title": "Financial Planning 101",
         "category": "Finance",
         "img": "https://example.com/img5.jpg",
@@ -27,7 +29,8 @@ let data = {
       },
       {
         "id": "4",
-        "name": "whatever",
+        "name": "David Lee",
+
         "title": "DIY Home Decor",
         "category": "Lifestyle",
         "img": "https://example.com/img4.jpg",
@@ -61,7 +64,11 @@ let data = {
         "profilePicture": "https://imagetolink.com/ib/IdNTuyJJbI.png",
       }
     ],
-    "session":{"name": "Yoseph"}
+
+    "session":{
+      "name":"John Doe",
+      "postId":""
+    }
   }
   
 

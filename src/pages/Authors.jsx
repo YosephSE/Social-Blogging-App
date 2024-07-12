@@ -1,19 +1,22 @@
 import React from 'react'
 import Author from '../components/Author'
-import personData from '../../data'
 import Header from '../components/Header'
 
-const Authors = () => {
-  const person = personData.users.map(data => (
-    <Author
-        key = {data.name}
-        name = {data.name}
-        img={data.profilePicture} 
-        post= {data.posts.length}
-    />
-  ))
+const Authors = ({data}) => {
+  const person = data.users.map(user => {
+    let count = 0
+    data.posts.forEach((post) => post.name === user.name && count++)
+    return( 
+      <Author
+        key = {user.name}
+        name = {user.name}
+        img={user.profilePicture} 
+        post= {count}
+      />
+    )
+    }
+  )
 
-  console.log(person)
   return(
     <>
       <Header />
