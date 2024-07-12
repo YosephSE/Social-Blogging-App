@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import profilePicture from "../assets/profilepicture.png"
 
 function Signup() {
-  const [fullName, setFullName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -18,12 +19,12 @@ function Signup() {
     }
 
     const userData = {
-      fullName,
+      name,
       email,
       password,
+      profilePicture,
     };
 
-  
     let users = JSON.parse(localStorage.getItem('users')) || [];
 
     
@@ -45,11 +46,11 @@ function Signup() {
           <div className="mb-4">
             <input
               className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="fullName"
+              id="name"
               type="text"
               placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import search from "../assets/search.png"
 import { Link } from 'react-router-dom';
 import home from '../assets/home.png'
+import NavBar from './NavBar';
+
 const Header = () => {
     const toggleMenu = () => {
         document.getElementById("hamburgerBtn").classList.toggle('toggle-btn')
@@ -11,11 +13,11 @@ const Header = () => {
     return (
         <>
         <div className='bg-[#1D1B20] flex justify-around lg:justify-between items-center'>
-            <div className='flex justify-between mx-4 py-4 min-w-80 w-full lg:max-w-96 lg:mx-4 items-center'>
-                <img src={home} alt="Home image" className='w-12 h-12'/>
-                <div className='bg-white rounded-3xl p-1 items'>
+            <div className='flex justify-around  w-full py-4 min-w-80 lg:max-w-96 lg:mx-4 items-center'>
+                <Link to = "/"><img src={home} alt="Home image" className='w-12 h-12'/></Link>
+                <div className='bg-white rounded-3xl p-1 items-center'>
                     <img src={search} alt="" className='inline'/>
-                    <input type="text" placeholder='Search by name' className='px-2 rounded-3xl min-w-40 md:w-60 focus:outline-none'/>
+                    <input type="text" placeholder='Search by name' className='px-2 rounded-3xl w-[50vw] md:w-60 focus:outline-none'/>
                 </div>
                 <button onClick={toggleMenu} id="hamburgerBtn" className="relative h-8 w-8 cursor-pointer text-3xl lg:hidden">
                     <div
@@ -23,21 +25,15 @@ const Header = () => {
                     </div>
                 </button>
             </div>
-            <nav id="main-nav-bar" className='hidden lg:block mx-4'>
+            <nav id="main-nav-bar" className='hidden lg:block mx-4 lg:mx-28'>
                 <ul className='flex gap-5 justify-around'>
-                    <li className='text-white hover:text-[#696565] text-xl'><Link to="/">Home</Link></li>
-                    <li className='text-white hover:text-[#696565] text-xl'><Link to="/createblog">Create Blog</Link></li>
-                    <li className='text-white hover:text-[#696565] text-xl'><Link to="/authors">Authors</Link></li>
-                    <li className='text-white hover:text-[#696565] text-xl'><Link to="/myposts">My Posts</Link></li>
+                    <NavBar id = "main" />
                 </ul>
             </nav>
         </div>
         <nav id="mobile-nav-bar" className='w-36 absolute right-2 hidden lg:hidden'>
             <ul>
-                <li className='bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'><Link to="/">Home</Link></li>
-                <li className='bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'><Link to="/createblog">Create Blog</Link></li>
-                <li className='bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'><Link to="/authors">Authors</Link></li>
-                <li className='bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'><Link to="/myposts">My Posts</Link></li>
+                <NavBar id="mobile" />
             </ul>
         </nav>
         </>
