@@ -8,7 +8,7 @@ import data from "../../data";
 const MyPosts = () => {
   let posts = data.posts;
   return (
-    <div>
+    <div className="bg-gray-100">
       <Chatbot />
       <Header />
       {posts.map(post => (
