@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { Link } from "react-router-dom";
 
-function Signin({data}) {
+function Signin({data, dataChange}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -17,7 +17,13 @@ function Signin({data}) {
       const session = { 
         name: user.name
       }
-      localStorage.setItem("session", JSON.stringify(session))
+      
+      dataChange(prevData => (
+        {
+          ...prevData,
+          session: session
+        }
+      ))
 
     } else {
       setError('Invalid email or password');
