@@ -3,11 +3,10 @@ import MyPost from "../components/Mypost";
 import Chatbot from "../components/Chatbot";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import data from "../../data";
 
-const MyPosts = () => {
-  let user = (JSON.parse(localStorage.getItem("session"))).name
-  let posts = JSON.parse(localStorage.getItem("posts"))
+const MyPosts = ({data, dataChange}) => {
+  let user = data.session.name
+  let posts = data.posts
   let myPosts = []
   for(let post of posts){
     if(post.name === user){
@@ -20,7 +19,7 @@ const MyPosts = () => {
       <Chatbot />
       <Header />
       {myPosts.map(post => (
-        <MyPost body={post.body} category={post.category} img={post.img} name={post.name} title={post.title} key={post.id}/>
+        <MyPost img={post.img} title={post.title} dataChange= {dataChange} id={post.id} key={post.id}/>
       ))}
       
       <Footer />
