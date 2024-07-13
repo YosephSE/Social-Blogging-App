@@ -6,7 +6,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 
 const CreateBlog = (props) => {
-    let logged = JSON.parse(localStorage.getItem("session")).name
+    let logged = JSON.parse(localStorage.getItem("session")).name == "" ? false: true;
     if (!logged){
         return <Navigate to='/signin'  />
     }
