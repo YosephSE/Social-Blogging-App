@@ -47,9 +47,9 @@ const EditBlog = ({data, dataChange}) => {
     }
 
     return (
-        <>
+        <div className="min-h-screen">
             <Header />
-            <div className="bg-[#cccccc] min-h-screen content-center">
+            <div className="bg-[#cccccc] content-center">
                 <div className="max-w-96 m-auto p-2">
                     <h1 className="text-3xl">Edit Post</h1>
                     <form onSubmit={sumbit}>
@@ -87,7 +87,7 @@ const EditBlog = ({data, dataChange}) => {
                 </div>
             </div>
             <Footer />
-        </>
+        </div>
     )
 }
 export default EditBlog;

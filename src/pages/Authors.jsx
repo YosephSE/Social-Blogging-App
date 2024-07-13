@@ -19,15 +19,15 @@ const Authors = ({data}) => {
   )
 
   return(
-    <>
+    <div className='min-h-screen'>
       <Header />
-      <div className="bg-[#cccccc] min-h-screen">
+      <div className="bg-[#cccccc]">
           <div className=" grid gap-4 py-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl m-auto">
               {person}
           </div>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

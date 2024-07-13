@@ -58,10 +58,10 @@ const CreateBlog = (props) => {
     }
 
     return (
-        <>
+        <div className="min-h-screen">
             <Header />
             <Chatbot />
-            <div className="bg-[#cccccc] min-h-screen content-center">
+            <div className="bg-[#cccccc] content-center">
                 <div className="max-w-96 m-auto p-2">
                     <h1 className="text-3xl">Create Post</h1>
                     <form onSubmit={sumbit}>
@@ -99,7 +99,7 @@ const CreateBlog = (props) => {
                 </div>
             </div>
             <Footer />
-        </>
+        </div>
     )
 }
 export default CreateBlog;
