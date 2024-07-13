@@ -40,9 +40,9 @@ function Signup({data , dataChange}) {
   };
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen flex flex-col'>
     <Header />
-    <div className="flex items-center justify-center bg-gray-200 w-full">
+    <div className="flex items-center justify-center bg-gray-200 w-full flex-grow">
       <div className="w-full max-w-xs">
         <form className="rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <h2 className="text-center text-2xl mb-6">Sign up</h2>

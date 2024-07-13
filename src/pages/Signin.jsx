@@ -33,8 +33,8 @@ function Signin({data, dataChange}) {
       <div className="flex flex-col min-h-screen">
       
     <Header/>
-    <div className="flex-grow">
-    <div className="flex items-center justify-center bg-gray-200 w-full">
+  
+    <div className="flex items-center justify-center bg-gray-200 w-full flex-grow">
       <div className="w-full max-w-xs">
         <form className="rounded px-8 pt-6 pb-8 mb-4 " onSubmit={handleLogin}>
           <h2 className="text-2xl mb-6">Sign In</h2>
@@ -79,7 +79,7 @@ function Signin({data, dataChange}) {
         </form>
       </div>
     </div>
-    </div>
+
     </div>
   );
 }
