@@ -31,7 +31,7 @@ function MyPost({ title, img, dataChange, id }) {
 
   return (
     <div className="flex justify-center items-center m-3">
-      <div className="bg-white flex mx-3 my-2 rounded-xl sm:w-4/5 md:w-3/5 lg:w-1/2">
+      <div className="bg-white flex mx-3 my-2 rounded-xl w-[90] sm:w-[80%] md:w-3/5 lg:w-1/2">
         <img
           className="h-20 w-24 mx-4 my-3 rounded-lg"
           src={author}
@@ -42,7 +42,7 @@ function MyPost({ title, img, dataChange, id }) {
             {title}
           </p>
         </div>
-        <div className="buttons flex ml-auto">
+        <div className="buttons flex flex-col ml-auto">
           <button className="bg-white w-14 py-2 rounded-lg my-auto mx-1 border-black border-2" onClick={handleChange}>
              Edit
           </button>
