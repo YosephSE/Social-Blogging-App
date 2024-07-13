@@ -2,7 +2,7 @@
 
 
 
-### Demo
+### Desktop Version
 ![image](https://github.com/user-attachments/assets/db5db327-021c-4825-8025-50450648ddaa)
 ![image](https://github.com/user-attachments/assets/94b001b9-6a74-4b17-b91e-f06161a1ab07)
 ![image](https://github.com/user-attachments/assets/256156d9-6d3f-48dd-9e47-cff64505bd3b)
