@@ -65,7 +65,7 @@ function Signin() {
             </button>
           </div>
           <p className="text-center text-gray-500 text-xs mt-4">
-            Don't have an account? <a className="text-blue-500" href="/signup">Sign up</a>
+            Don't have an account? <span className='text-blue-500'><Link to="/signup" >Sign Up</Link></span>
           </p>
         </form>
       </div>
