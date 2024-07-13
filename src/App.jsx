@@ -32,7 +32,7 @@ function App() {
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
           <Route path="/signin" element={<Signin/>} />
-          <Route path="/signup" element={<Signup/>} />
+          <Route path="/signup" element={<Signup data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/myposts" element={<MyPosts/>} />
           <Route path="/profile" element={<Profile/>} />
         </Routes>
