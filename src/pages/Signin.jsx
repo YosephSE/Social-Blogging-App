@@ -28,7 +28,7 @@ function Signin({data}) {
     <Header/>
     <div className="flex items-center justify-center min-h-screen bg-gray-200 w-full">
       <div className="w-full max-w-xs">
-        <form className="rounded px-8 pt-6 pb-8 mb-4 ">
+        <form className="rounded px-8 pt-6 pb-8 mb-4 " onSubmit={handleLogin}>
           <h2 className="text-2xl mb-6">Sign In</h2>
 
           <div className="mb-4">
@@ -59,8 +59,8 @@ function Signin({data}) {
           <div className="flex items-center justify-between">
             <button
               className="bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              onClick={handleLogin}
+              type="submit"
+
             >
               Login
             </button>

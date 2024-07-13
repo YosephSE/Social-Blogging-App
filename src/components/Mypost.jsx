@@ -22,7 +22,7 @@ function MyPost({ title, img, dataChange, id }) {
       <div className="bg-white flex mx-3 my-2 rounded-xl sm:w-4/5 md:w-3/5 lg:w-1/2">
         <img
           className="h-20 w-24 mx-4 my-3 rounded-lg"
-          src={img}
+          src={author}
           alt="IMG"
         />
         <div className="flex items-center flex-grow">

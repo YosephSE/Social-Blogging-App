@@ -40,7 +40,8 @@ const CreateBlog = (props) => {
         }))
     },[])
     
-    function sumbit(){
+    function sumbit(event){
+        event.preventDefault();
         props.dataChange(prevState =>(
             {
                 ...prevState,
