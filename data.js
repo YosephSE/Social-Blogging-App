@@ -66,7 +66,7 @@ let data = {
     ],
 
     "session":{
-      "name":"John Doe",
+      "name":"",
       "postId":""
     }
   }
