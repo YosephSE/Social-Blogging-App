@@ -1,4 +1,15 @@
 # Social Blogging App
+### Mobile Version
+![image](https://github.com/user-attachments/assets/135e89da-b311-4ad8-9ffd-1e038f90eb55)
+![image](https://github.com/user-attachments/assets/f54d5295-6e7f-4722-94d2-3c416031cf66)
+![image](https://github.com/user-attachments/assets/a995168e-8bc3-4f71-b44c-2cf76228af21)
+![image](https://github.com/user-attachments/assets/50828dcb-0c0d-439b-ae33-1724d589ecf2)
+![image](https://github.com/user-attachments/assets/a96b63d5-a3c7-4f07-8a45-8d5b63d7e03b)
+![image](https://github.com/user-attachments/assets/46f23833-f433-460d-8b5d-53d1afcc7a41)
+![image](https://github.com/user-attachments/assets/dc437be2-0bd5-4bb2-ab31-bdc7114f0996)
+![image](https://github.com/user-attachments/assets/a888481b-236d-455e-982b-d6feb2e5741c)
+
+
 
 
 
