@@ -3,7 +3,6 @@ import chatbot from "../assets/chatbot.png";
 import { Link } from "react-router-dom";
 
 const Chatbot = () => {
-
   return (
     <div>
       <Link target="_blank" to="https://zeresenayyaregalchatbot.streamlit.app/">
@@ -13,6 +12,8 @@ const Chatbot = () => {
           className="fixed bottom-1 right-1 w-16 h-16"
         />
       </Link>
-      </div>
+    </div>
   );
 };
+
+export default Chatbot;
