@@ -19,9 +19,9 @@ const Authors = ({data}) => {
   )
 
   return(
-    <div className='min-h-screen'>
+    <div className='min-h-screen flex flex-col'>
       <Header />
-      <div className="bg-[#cccccc]">
+      <div className="bg-[#cccccc] flex-grow">
           <div className=" grid gap-4 py-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl m-auto">
               {person}
           </div>
