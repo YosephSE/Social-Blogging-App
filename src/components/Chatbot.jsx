@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
-import botIcon from "../assets/chatbot.png"
+import React from "react";
+import chatbot from "../assets/chatbot.png";
+import { Link } from "react-router-dom";
 
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-4 right-4">
-      <div className={`transition-transform transform ${isOpen ? 'translate-y-0' : 'translate-y-full'} fixed bottom-4 right-4 bg-white shadow-lg w-1/5 h-1/2`}>
-        <iframe
-          src="https://zeresenayyaregalchatbot.streamlit.app/"
-          className="w-full h-full"
-          title="Chatbot"
-        ></iframe>
+    <div>
+      <Link target="_blank" to="https://zeresenayyaregalchatbot.streamlit.app/">
+        <img
+          src={chatbot}
+          alt="Fixed Image"
+          className="fixed bottom-1 right-1 w-16 h-16"
+        />
+      </Link>
       </div>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-blue-500 text-white p-2 rounded-full shadow-lg"
-      >
-       <img src={botIcon} alt="BotIcon" className='w-16 h-16 '/>
-      </button>
-    </div>
   );
 };
-
-export default Chatbot;
