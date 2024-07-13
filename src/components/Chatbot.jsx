@@ -7,7 +7,7 @@ const Chatbot = () => {
     <div className="fixed bottom-4 right-4">
       <div className={`transition-transform transform ${isOpen ? 'translate-y-0' : 'translate-y-full'} fixed bottom-4 right-4 bg-white shadow-lg w-1/5 h-1/2`}>
         <iframe
-          src="https://chatgpt.com"
+          src="https://zeresenayyaregalchatbot.streamlit.app/"
           className="w-full h-full"
           title="Chatbot"
         ></iframe>
