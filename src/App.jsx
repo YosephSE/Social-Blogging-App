@@ -31,7 +31,7 @@ function App() {
           <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
-          <Route path="/signin" element={<Signin/>} />
+          <Route path="/signin" element={<Signin data = {userData.users}/>} />
           <Route path="/signup" element={<Signup data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/myposts" element={<MyPosts/>} />
           <Route path="/profile" element={<Profile/>} />

@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { Link } from "react-router-dom";
 
-function Signin() {
+function Signin({data}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const users = data;
     const user = users.find(user => user.email === email && user.password === password);
     if (user) {
       navigate('/');
