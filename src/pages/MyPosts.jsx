@@ -14,12 +14,13 @@ const MyPosts = ({data, dataChange}) => {
     }
   }
 
+  const img = data.users.filter((person) => person.name === user)
   return (
     <div className="bg-gray-100">
       <Chatbot />
       <Header />
       {myPosts.map(post => (
-        <MyPost img={post.img} title={post.title} dataChange= {dataChange} id={post.id} key={post.id}/>
+        <MyPost img={img[0].profilePicture} title={post.title} dataChange= {dataChange} id={post.id} key={post.id}/>
       ))}
       
       <Footer />
