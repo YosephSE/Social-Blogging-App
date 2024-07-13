@@ -4,6 +4,7 @@ import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+import Footer from "../components/Footer";
 
 
 
@@ -85,6 +86,7 @@ const EditBlog = ({data, dataChange}) => {
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

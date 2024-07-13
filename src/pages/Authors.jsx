@@ -1,6 +1,7 @@
 import React from 'react'
 import Author from '../components/Author'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Authors = ({data}) => {
   const person = data.users.map(user => {
@@ -25,6 +26,7 @@ const Authors = ({data}) => {
               {person}
           </div>
       </div>
+      <Footer />
     </>
   )
 }
