@@ -2,10 +2,14 @@ import React, { useEffect, useState} from "react";
 import ReactMde from "react-mde";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Redirect } from "react-router-dom";
 import { nanoid } from "nanoid";
 
 const CreateBlog = (props) => {
+    let logged = JSON.parse(localStorage.getItem("session")).name
+    if (!logged){
+        return <Redirect to='/signin'  />
+    }
     const navigate = useNavigate()
     const [postData, setPostData] = useState({
         name:props.data,
