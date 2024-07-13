@@ -17,6 +17,18 @@ function MyPost({ title, img, dataChange, id }) {
     navigate("/editblog") 
   }
 
+  function deletePost(){
+
+    dataChange(prevData => {
+      const updatedPosts = prevData.posts.filter(post => post.id !== id)
+      return(
+        {
+        ...prevData,
+        posts: updatedPosts
+      })
+  })
+  }
+
   return (
     <div className="flex justify-center items-center m-3">
       <div className="bg-white flex mx-3 my-2 rounded-xl sm:w-4/5 md:w-3/5 lg:w-1/2">
@@ -34,7 +46,7 @@ function MyPost({ title, img, dataChange, id }) {
           <button className="bg-white w-14 py-2 rounded-lg my-auto mx-1 border-black border-2" onClick={handleChange}>
              Edit
           </button>
-          <button className="bg-black text-white w-14 py-2 rounded-lg mx-1 my-auto border-black border-2">
+          <button className="bg-black text-white w-14 py-2 rounded-lg mx-1 my-auto border-black border-2" onClick={deletePost}>
             Delete
           </button>
         </div>
