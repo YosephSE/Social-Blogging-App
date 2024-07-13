@@ -35,13 +35,13 @@ function Blog(props) {
       alt="author profile"
       className="w-16 rounded-lg h-16"
       onError={(e) => {
-        e.target.onerror = null; // Prevents infinite loop if default image also fails
+        e.target.onerror = null;
         e.target.src = author;
       }}
     />
             <div className="author-detail">
                 <div className="author-name font-bold px-3">{props.name}</div>
-                <div className="date px-3">{diff}</div>
+                <div className=" px-3 italic font-thin">{diff}</div>
             </div>
         </div>
         <hr className=" bg-gray-700 w-full h-1 mb-3"/>
