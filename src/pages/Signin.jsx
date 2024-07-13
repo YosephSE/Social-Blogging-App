@@ -24,7 +24,7 @@ function Signin({data, dataChange}) {
           session: session
         }
       ))
-
+    location.reload()
     } else {
       setError('Invalid email or password');
     }
