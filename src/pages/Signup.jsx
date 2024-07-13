@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import profilePicture from "../assets/profilepicture.png"
+import { Link } from "react-router-dom";
 
 function Signup() {
   const [name, setName] = useState('');
