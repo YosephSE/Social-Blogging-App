@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 const Blogs = ({data}) => {
   const posts = data.posts
   return (
-    <>
+    <div className="min-h-screen">
       <Header />
       <Chatbot />
       
@@ -29,7 +29,7 @@ const Blogs = ({data}) => {
         })}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
