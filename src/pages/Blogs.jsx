@@ -16,6 +16,7 @@ const Blogs = () => {
         {posts.map((post) => (
           <Blog
             name={post.name}
+            date={post.date}
             key={post.id}
             title={post.title}
             category={post.category}
