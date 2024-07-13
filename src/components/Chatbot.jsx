@@ -9,7 +9,7 @@ const Chatbot = () => {
         <img
           src={chatbot}
           alt="Fixed Image"
-          className="fixed bottom-1 right-1 w-16 h-16"
+          className="fixed bottom-1 right-1 w-16 h-16 z-10"
         />
       </Link>
     </div>
