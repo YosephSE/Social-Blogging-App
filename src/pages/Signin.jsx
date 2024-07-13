@@ -3,22 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { Link } from "react-router-dom";
 
-function Signin() {
+function Signin({data, dataChange}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const users = data;
     const user = users.find(user => user.email === email && user.password === password);
     if (user) {
       navigate('/');
       const session = { 
         name: user.name
       }
-      localStorage.setItem("session", JSON.stringify(session))
-
+      
+      dataChange(prevData => (
+        {
+          ...prevData,
+          session: session
+        }
+      ))
+    location.reload()
     } else {
       setError('Invalid email or password');
     }
@@ -28,7 +34,7 @@ function Signin() {
     <Header/>
     <div className="flex items-center justify-center min-h-screen bg-gray-200 w-full">
       <div className="w-full max-w-xs">
-        <form className="rounded px-8 pt-6 pb-8 mb-4 ">
+        <form className="rounded px-8 pt-6 pb-8 mb-4 " onSubmit={handleLogin}>
           <h2 className="text-2xl mb-6">Sign In</h2>
 
           <div className="mb-4">
@@ -59,8 +65,8 @@ function Signin() {
           <div className="flex items-center justify-between">
             <button
               className="bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              onClick={handleLogin}
+              type="submit"
+
             >
               Login
             </button>

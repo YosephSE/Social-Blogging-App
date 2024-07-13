@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import profilePicture from "../assets/profilepicture.png"
 import { Link } from "react-router-dom";
 
-function Signup() {
+function Signup({data , dataChange}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,13 +26,15 @@ function Signup() {
       profilePicture,
     };
 
-    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let users = data;
 
     
     users.push(userData);
 
-  
-    localStorage.setItem('users', JSON.stringify(users));
+    dataChange(prevData => ({
+      ...prevData,
+      users: users
+    }))
 
     navigate('/signin');
   };
