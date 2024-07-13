@@ -4,6 +4,7 @@ import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
 import { useNavigate, Navigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+import Chatbot from "../components/Chatbot";
 
 const CreateBlog = (props) => {
     let logged = JSON.parse(localStorage.getItem("session")).name == "" ? false: true;
@@ -58,6 +59,7 @@ const CreateBlog = (props) => {
     return (
         <>
             <Header />
+            <Chatbot />
             <div className="bg-[#cccccc] min-h-screen content-center">
                 <div className="max-w-96 m-auto p-2">
                     <h1 className="text-3xl">Create Post</h1>
