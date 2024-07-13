@@ -34,7 +34,7 @@ function App() {
           <Route path="/signin" element={<Signin data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/signup" element={<Signup data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/myposts" element={<MyPosts data = {userData} dataChange = {setUserData}/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile data = {userData}/>} />
         </Routes>
     </Router>
   );
