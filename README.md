@@ -1,8 +1,31 @@
-# React + Vite
+# Social Blogging App
+### Mobile Version
+![image](https://github.com/user-attachments/assets/135e89da-b311-4ad8-9ffd-1e038f90eb55)
+![image](https://github.com/user-attachments/assets/f54d5295-6e7f-4722-94d2-3c416031cf66)
+![image](https://github.com/user-attachments/assets/a995168e-8bc3-4f71-b44c-2cf76228af21)
+![image](https://github.com/user-attachments/assets/50828dcb-0c0d-439b-ae33-1724d589ecf2)
+![image](https://github.com/user-attachments/assets/a96b63d5-a3c7-4f07-8a45-8d5b63d7e03b)
+![image](https://github.com/user-attachments/assets/46f23833-f433-460d-8b5d-53d1afcc7a41)
+![image](https://github.com/user-attachments/assets/dc437be2-0bd5-4bb2-ab31-bdc7114f0996)
+![image](https://github.com/user-attachments/assets/a888481b-236d-455e-982b-d6feb2e5741c)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+### Desktop Version
+![image](https://github.com/user-attachments/assets/db5db327-021c-4825-8025-50450648ddaa)
+![image](https://github.com/user-attachments/assets/94b001b9-6a74-4b17-b91e-f06161a1ab07)
+![image](https://github.com/user-attachments/assets/256156d9-6d3f-48dd-9e47-cff64505bd3b)
+![image](https://github.com/user-attachments/assets/e30918da-9b42-42d8-ad78-e23335bb0e64)
+![image](https://github.com/user-attachments/assets/0bd70ac9-ec05-40b6-8e9f-e0e19d3e4cee)
+![image](https://github.com/user-attachments/assets/efdb8cff-2a2b-4c3f-a7c5-4c3ec4e674a5)
+![image](https://github.com/user-attachments/assets/7a437de8-9d1f-47a5-8b53-075bfc32a850)
+
+
+
+
+
+
+
+
