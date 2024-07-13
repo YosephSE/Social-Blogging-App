@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import home from '../assets/home.png'
 import NavBar from './NavBar';
 
+
 const Header = () => {
     const toggleMenu = () => {
         document.getElementById("hamburgerBtn").classList.toggle('toggle-btn')
