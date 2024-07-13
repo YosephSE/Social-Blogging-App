@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import MyPosts from "./pages/MyPosts";
 import Signin from "./pages/Signin";
@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Blogs />} />
+          <Route path="/" element={<Blogs data = {userData} />} />
           <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
