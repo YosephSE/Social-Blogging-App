@@ -18,7 +18,7 @@ function Blog(props) {
     setBook(book => !book)
   }
   let bookImg = book ? bookmarked: bookmarking;
- 
+  let diff = Math.floor((new Date().getTime() - props.date) / 86400000) ? Math.floor((new Date().getTime() - props.date) / 86400000): "Today";
   return (
     
       <div className="blog bg-white p-3 rounded-3xl">
@@ -41,7 +41,7 @@ function Blog(props) {
     />
             <div className="author-detail">
                 <div className="author-name font-bold px-3">{props.name}</div>
-                <div className="date px-3">50 days ago</div>
+                <div className="date px-3">{diff}</div>
             </div>
         </div>
         <hr className=" bg-gray-700 w-full h-1 mb-3"/>

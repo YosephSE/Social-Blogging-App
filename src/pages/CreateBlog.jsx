@@ -14,6 +14,7 @@ const CreateBlog = (props) => {
         category: "",
         img:"",
         body: "",
+        date: 0,
     })
 
     function handleChange(event){
@@ -31,6 +32,14 @@ const CreateBlog = (props) => {
         }))
     }
 
+    useEffect(() => {
+        const time = new Date().getTime()
+        setPostData(prevData => ({
+            ...prevData,
+            date: time
+        }))
+    },[])
+    
     function sumbit(){
         props.dataChange(prevState =>(
             {
