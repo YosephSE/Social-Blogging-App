@@ -30,15 +30,14 @@ function Blog(props) {
          {props.body}
         </div>
         <div className="author flex py-3">
-        <img
-      src={props.profilePicture}
-      alt="author profile"
-      className="w-16 rounded-lg h-16"
-      onError={(e) => {
-        e.target.onerror = null; // Prevents infinite loop if default image also fails
-        e.target.src = author;
-      }}
-    />
+          <img
+          src={props.profilePicture}
+          alt="author profile"
+          className="w-16 rounded-lg h-16"
+          onError={(e) => {
+            e.target.onerror = null; // Prevents infinite loop if default image also fails
+            e.target.src = author;
+        }}/>
             <div className="author-detail">
                 <div className="author-name font-bold px-3">{props.name}</div>
                 <div className="date px-3">{diff}</div>
