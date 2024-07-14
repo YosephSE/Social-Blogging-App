@@ -5,7 +5,6 @@ import liked from "../assets/like.png";
 import notLiked from "../assets/like1.png";
 import bookmarking from "../assets/bookmark.png";
 import bookmarked from "../assets/bookmarked.png";
-import ai from "../assets/ai.png"
 
 function Blog(props) {
   let [like, setLike] = React.useState(false)

@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import author from "../assets/author.png";
 
 function MyPost({ title, img, dataChange, id }) {
   const navigate = useNavigate()
