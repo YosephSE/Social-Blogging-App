@@ -32,7 +32,7 @@ const Header = () => {
                 </ul>
             </nav>
         </div>
-        <nav id="mobile-nav-bar" className='w-36 absolute right-2 hidden lg:hidden'>
+        <nav id="mobile-nav-bar" className='w-36 absolute right-2 hidden lg:hidden z-50'>
             <ul>
                 <NavBar id="mobile" />
             </ul>
