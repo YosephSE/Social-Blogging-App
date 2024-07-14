@@ -115,7 +115,8 @@ const CreateBlog = (props) => {
                             disablePreview
                             onChange={markDownChange}
                         />
-                        <input className="mt-4 block" type="file" accept="image/*" onChange={handleImageChange}/>
+                        {postData.img && <img src={postData.img} alt="Post Image" className="w-full my-5"/>}
+                        <input className="mt-4 block"type="file" accept="image/*" id = "Image-input" onChange={handleImageChange}/>
                         <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Create</button>
                     </form>
                 </div>

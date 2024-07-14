@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactMde from "react-mde";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-import { nanoid } from "nanoid";
 import Footer from "../components/Footer";
 
 
@@ -12,6 +11,7 @@ const EditBlog = ({data, dataChange}) => {
     const navigate = useNavigate()
     const userPost = data.posts.filter(post => (post.name === data.session.name && post.id === data.session.postId))
     const [postData, setPostData] = useState(userPost[0])
+    const handlePageRender = useRef(false)
 
     function handleChange(event){
         const {name, value} = event.target
@@ -20,6 +20,33 @@ const EditBlog = ({data, dataChange}) => {
             [name]:value
         }))
     }
+
+    const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(userPost[0].img);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          setImage(file);
+          const reader = new FileReader();
+          reader.onloadend = () => {
+              setPreview(reader.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+  
+    useEffect( () => {
+        if(handlePageRender){
+            setPostData(prevData => ({
+                ...prevData,
+                img: preview
+            }))
+        }
+
+        handlePageRender.current = true
+    }, [preview])
+
 
     function markDownChange(text){
         setPostData(prevData => ({
@@ -81,7 +108,8 @@ const EditBlog = ({data, dataChange}) => {
                             disablePreview
                             onChange={markDownChange}
                         />
-                        <input className="mt-4 block"type="file" name="" id="" />
+                        <img src={postData.img} alt="Post Image" className="w-full my-5"/>
+                        <input className="mt-4 block"type="file" accept="image/*" onChange={handleImageChange} />
                         <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Update</button>
                     </form>
                 </div>

@@ -31,7 +31,6 @@ function Blog(props) {
     const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
-    console.log(days)
     if(months >= 1){
       diff = `${months} month${months === 1? "": "s"} ago`
     }else if(days >= 1){
