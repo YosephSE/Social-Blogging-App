@@ -18,7 +18,36 @@ function Blog(props) {
     setBook(book => !book)
   }
   let bookImg = book ? bookmarked: bookmarking;
-  let diff = Math.floor((new Date().getTime() - props.date) / 60000) ? `${Math.floor((new Date().getTime() - props.date) / 60000)} Minutes Ago`: "Now";
+  let diff;
+  const calculateTimeElapsed = () => {
+    const postDate = props.date;
+    const now = new Date().getTime();
+    const elapsed = now - postDate;
+
+  
+    const months = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 30));
+    const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+    console.log(days)
+    if(months >= 1){
+      diff = `${months} month${months === 1? "": "s"} ago`
+    }else if(days >= 1){
+      diff = `${days} day${days === 1? "": "s"} ago`
+    } else if(hours >= 1){
+      diff = `${hours} hour${hours === 1? "": "s"} ago`
+    } else if(minutes >= 1){
+      diff = `${minutes} minute${minutes === 1? "": "s"} ago`
+    } else if(seconds >= 1){
+      diff = `${seconds} second${seconds === 1? "": "s"} ago`
+    } else{
+      diff = "Now"
+    }
+  };
+
+  calculateTimeElapsed()
   return (
     
       <div className="blog bg-white p-3 rounded-3xl">

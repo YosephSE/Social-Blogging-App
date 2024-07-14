@@ -3,6 +3,7 @@ let data = {
       {
         "id": "1",
         "name": "Max Carter",
+        "date": "1705004800000",
         "title": "The Future of AI: Trends You Need to Know About",
         "category": "Technology",
         "img": "https://imagetolink.com/ib/2XcJk744yq.png",
@@ -11,6 +12,7 @@ let data = {
       {
         "id": "2",
         "name": "Sophie Miller",
+        "date": "1717468800000",
         "title": "Superfoods Spotlight: Eat Your way to better Health",
         "category": "Nutrition",
         "img": "https://imagetolink.com/ib/rHFrEKdid9.png",
@@ -19,6 +21,7 @@ let data = {
       {
         "id": "3",
         "name": "Lily Thompson",
+        "date": "1709241600000",
         "title": "Eco-Chic: How to Build a Sustainable Wardrobe",
         "category": "Fashion",
         "img": "https://imagetolink.com/ib/3CzRygD91e.png",
@@ -28,6 +31,7 @@ let data = {
       {
         "id": "4",
         "name": "Emily Johnson",
+        "date": "1707696000000",
         "title": "Exploring the Reniassance: The birth of Perspective",
         "category": "Art",
         "img": "https://imagetolink.com/ib/n6BckqE9Jm.png",
@@ -37,6 +41,7 @@ let data = {
       {
         "id": "5",
         "name": "Max Carter",
+        "date": "1717372800000",
         "title": "Mindfulness 101: Easy Practice to Bring calm into your Life",
         "category": "Mindfulness",
         "img": "https://imagetolink.com/ib/VQwfgDKytV.png",
