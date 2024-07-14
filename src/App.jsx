@@ -7,7 +7,6 @@ import Signup from "./pages/Signup";
 import Authors from "./pages/Authors";
 import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
-import Profile from "./pages/Profile";
 import data  from "../data";
 
 function App() {
