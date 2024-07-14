@@ -31,6 +31,28 @@ const CreateBlog = (props) => {
         }))
     }
 
+    const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(null);
+  
+    const handleImageChange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setImage(file);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    useEffect( () => {
+        setPostData(prevData => ({
+            ...prevData,
+            img: preview
+        }))
+    }, [preview])
+
     function markDownChange(text){
         setPostData(prevData => ({
             ...prevData,
@@ -93,7 +115,7 @@ const CreateBlog = (props) => {
                             disablePreview
                             onChange={markDownChange}
                         />
-                        <input className="mt-4 block" type="file" name="" id="" />
+                        <input className="mt-4 block" type="file" accept="image/*" onChange={handleImageChange}/>
                         <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Create</button>
                     </form>
                 </div>

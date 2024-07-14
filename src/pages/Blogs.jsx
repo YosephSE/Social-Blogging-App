@@ -23,7 +23,8 @@ const Blogs = ({data}) => {
               title={post.title}
               category={post.category}
               body={post.body}
-              img={user[0]?.profilePicture}
+              profilePicture ={user[0]?.profilePicture}
+              img = {post.img}
             />
           )
         })}

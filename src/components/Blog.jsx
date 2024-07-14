@@ -22,7 +22,7 @@ function Blog(props) {
   return (
     
       <div className="blog bg-white p-3 rounded-3xl">
-        <img src={ai} alt="Blog Img" className="rounded-3xl" />
+        <img src={props.img} alt="Blog Img" className="rounded-3xl" />
         <div className="title text-xl font-bold pt-4 text-justify">
           {props.title}
         </div>
@@ -31,7 +31,7 @@ function Blog(props) {
         </div>
         <div className="author flex py-3">
         <img
-      src={props.img}
+      src={props.profilePicture}
       alt="author profile"
       className="w-16 rounded-lg h-16"
       onError={(e) => {
