@@ -14,14 +14,16 @@ const MyPosts = ({data, dataChange}) => {
     }
   }
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
+    <div className="bg-gray-100 ">
       <Chatbot />
       <Header />
+      <div className="flex flex-col min-h-[calc(100vh-80px)]">
       {myPosts.map(post => (
         <MyPost img={post.img} title={post.title} dataChange= {dataChange} id={post.id} key={post.id}/>
       ))}
       
       <Footer />
+      </div>
     </div>
   );
 };
