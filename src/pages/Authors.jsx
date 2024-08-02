@@ -1,36 +1,37 @@
-import React, { useState } from 'react'
-import Author from '../components/Author'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import React, { useState } from "react";
+import Author from "../components/Author";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Chatbot from "../components/Chatbot";
 
-const Authors = ({data}) => {
-  const [users, setUsers] = useState(data.users)
-  const person = users.map(user => {
-    let count = 0
-    data.posts.forEach((post) => post.name === user.name && count++)
-    return( 
+const Authors = ({ data }) => {
+  const [users, setUsers] = useState(data.users);
+  const person = users.map((user) => {
+    let count = 0;
+    data.posts.forEach((post) => post.name === user.name && count++);
+    return (
       <Author
-        key = {user.name}
-        name = {user.name}
-        img={user.profilePicture} 
-        post= {count}
+        key={user.name}
+        name={user.name}
+        img={user.profilePicture}
+        post={count}
       />
-    )
-    }
-  )
+    );
+  });
 
-  return(
+  return (
     <div>
-      <Header page = 'Authors' dataChange={setUsers} data={data.users}/>
+      <Chatbot />
+      <Header page="Authors" dataChange={setUsers} data={data.users} />
       <div className="flex flex-col min-h-[calc(100vh-80px)]">
-      <div className="bg-[#cccccc] flex-grow">
+        <div className="bg-[#cccccc] flex-grow">
           <div className=" grid gap-4 py-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl m-auto">
-              {person}
+            {person}
           </div>
-      </div>
-      <Footer />
+        </div>
+        <Footer />
       </div>
     </div>
-    )
-  }
+  );
+};
 export default Authors;
