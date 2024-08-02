@@ -49,7 +49,7 @@ const CommentModal = ({ comments, onClose }) => {
             </button>
           </div>
         ) : (
-          <p className="text-center">LOGIN TO COMMENT</p>
+          <p className="text-center text-white bg-black">LOGIN TO COMMENT</p>
         )}
       </div>
     </div>
