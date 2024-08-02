@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-black w-full mt-auto">
+    <div className="bg-black w-full">
       <div className="categories sm:flex sm:justify-center pt-4 flex-wrap sm:flex-nowrap pb-10">
         <div className="category bg-gray-200 px-2 py-1 rounded-lg w-auto sm:w-44 text-center m-3">
           Technology

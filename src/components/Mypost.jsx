@@ -45,7 +45,7 @@ function MyPost({ title, img, dataChange, id }) {
           <button className="bg-white w-14 py-2 rounded-lg my-auto mx-1 border-black border-2" onClick={handleChange}>
              Edit
           </button>
-          <button className="bg-black text-white w-14 py-2 rounded-lg mx-1 my-auto border-black border-2" onClick={deletePost}>
+          <button className="bg-black text-white w-14 py-2 rounded-lg mx-1 my-auto border-black border-2 mr-2" onClick={deletePost}>
             Delete
           </button>
         </div>

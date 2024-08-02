@@ -17,7 +17,7 @@ const Header = ({dataChange, page, data}) => {
             <div className='flex justify-between  w-full py-4 min-w-80 lg:max-w-96 lg:mx-4 items-center'>
                 <Link to = "/"><img src={home} alt="Home image" className='w-12 h-12'/></Link>
                 {page && <SearchBar search = {dataChange} page = {page} data={data}/>}
-                <button onClick={toggleMenu} id="hamburgerBtn" className="relative h-8 w-8 cursor-pointer text-3xl lg:hidden">
+                <button onClick={toggleMenu} id="hamburgerBtn" className="relative h-8 w-8 cursor-pointer text-3xl lg:hidden m-2">
                     <div
                         className="absolute top-4 -mt-0.5 h-1 w-8 bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:bg-white after:transition-all after:duration-500 after:content-['']">
                     </div>

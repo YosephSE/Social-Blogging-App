@@ -17,7 +17,7 @@ const NavBar = ({id}) =>{
         <>
         { user?.name?
             <>
-                <li className={id === "main" ? 'text-white hover:text-[#696565] text-xl': 'bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'}>{user.name}</li>
+                <li className={id === "main" ? 'text-white text-xl': 'bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black'}>{user.name}</li>
                 <li className={id === "main" ? 'text-white hover:text-[#696565] text-xl': 'bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'}><Link to="/createblog">Create Blog</Link></li>
                 <li className={id === "main" ? 'text-white hover:text-[#696565] text-xl': 'bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'}><Link to="/authors">Authors</Link></li>
                 <li className={id === "main" ? 'text-white hover:text-[#696565] text-xl': 'bg-white text-[#696565] py-3 px-4 text-center border-t-[1px] border-black hover:bg-gray-400 hover:text-black'}><Link to="/myposts">My Posts</Link></li>
