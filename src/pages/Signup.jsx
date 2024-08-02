@@ -21,7 +21,8 @@ function Signup({data , dataChange}) {
     }
 
     const userExists = data.filter(user => user.email === email)
-    if(userExists){
+    console.log(userExists)
+    if(userExists.length === 0){
       setError('Account exists please login!');
     }
     else {

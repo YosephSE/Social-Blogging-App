@@ -17,14 +17,12 @@ function Signin({data, dataChange}) {
       const session = { 
         name: user.name
       }
-      
       dataChange(prevData => (
         {
           ...prevData,
           session: session
         }
       ))
-    location.reload()
     } else {
       setError('Invalid email or password');
     }
