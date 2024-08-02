@@ -6,6 +6,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
+import { comment } from "postcss";
 
 const CreateBlog = (props) => {
     let logged = JSON.parse(localStorage.getItem("session")).name == "" ? false: true;
@@ -20,6 +21,7 @@ const CreateBlog = (props) => {
         category: "",
         img:"",
         body: "",
+        comments: [],
         date: 0,
     })
 

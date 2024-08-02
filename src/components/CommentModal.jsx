@@ -21,7 +21,7 @@ const CommentModal = ({ comments, onClose }) => {
           </button>
         </div>
         <div className="mt-4">
-          {allComments.length > 0 ? (
+          {allComments ? (
             allComments.map((comment, index) => (
               <div key={index} className="mb-2">
                 <div className="text-lg font-semibold">{comment.username}</div>
