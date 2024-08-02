@@ -15,7 +15,6 @@ const Blogs = ({data}) => {
           const user = data.users.filter((user) => user.name === post.name);
           return (
             <Blog
-              dataChange={dataChange}
               name={post.name}
               date={post.date}
               key={post.id}

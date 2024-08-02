@@ -11,7 +11,6 @@ function Blog(props) {
   const [like, setLike] = useState(false);
   const [book, setBook] = useState(false);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
-  console.log(props.comments);
   const [comments, setComments] = useState(props.comments);
 
   const toggleLike = () => {
@@ -34,7 +33,6 @@ function Blog(props) {
 
   const calculateTimeElapsed = () => {
     const postDate = props.date;
-    console.log("post", postDate);
     const now = new Date().getTime();
     const elapsed = now - postDate;
 
