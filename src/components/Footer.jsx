@@ -20,10 +20,10 @@ const Footer = () => {
           Fashion
         </div>
         <div className="category bg-gray-200 px-2 py-1 rounded-lg w-auto sm:w-36  text-center m-3">
-          Uncatagorized
+          Mindfulness
         </div>
         <div className="category bg-gray-200 px-2 py-1 rounded-lg w-auto sm:w-36  text-center m-3">
-          Mindfulness
+          Uncatagorized
         </div>
       </div>
       <hr />

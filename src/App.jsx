@@ -7,7 +7,6 @@ import Signup from "./pages/Signup";
 import Authors from "./pages/Authors";
 import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
-import Profile from "./pages/Profile";
 import data  from "../data";
 
 function App() {
@@ -34,7 +33,6 @@ function App() {
           <Route path="/signin" element={<Signin data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/signup" element={<Signup data = {userData.users} dataChange = {setUserData}/>} />
           <Route path="/myposts" element={<MyPosts data = {userData} dataChange = {setUserData}/>} />
-          <Route path="/profile" element={<Profile data = {userData}/>} />
         </Routes>
     </Router>
   );

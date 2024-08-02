@@ -30,9 +30,9 @@ function Signin({data, dataChange}) {
     }
   };
   return (
-      <div className="flex flex-col min-h-screen">
-      
+    <>
     <Header/>
+      <div className="flex flex-col min-h-[calc(100vh-80px)]">
   
     <div className="flex items-center justify-center bg-gray-200 w-full flex-grow">
       <div className="w-full max-w-xs">
@@ -81,6 +81,7 @@ function Signin({data, dataChange}) {
     </div>
 
     </div>
+    </>
   );
 }
 
