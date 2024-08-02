@@ -29,7 +29,7 @@ const Header = ({dataChange, page, data}) => {
                 </ul>
             </nav>
         </div>
-        <nav id="mobile-nav-bar" className='w-36 absolute right-2 hidden lg:hidden z-50'>
+        <nav id="mobile-nav-bar" className='w-36 absolute top-[80px] right-2 hidden lg:hidden z-50'>
             <ul>
                 <NavBar id="mobile" />
             </ul>
