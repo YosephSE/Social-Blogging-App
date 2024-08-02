@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CommentModal = ({ comments, onClose }) => {
+  const navigate = useNavigate()
   const [allComments, setAllComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
   const username = JSON.parse(localStorage.getItem("session")).name;
@@ -9,6 +11,7 @@ const CommentModal = ({ comments, onClose }) => {
 
   const submitComment = () => {
     allComments.push({ username, comment: newComment });
+    console.log(allComments)
     setNewComment("");
   };
 
@@ -22,7 +25,7 @@ const CommentModal = ({ comments, onClose }) => {
           </button>
         </div>
         <div className="mt-4">
-          {allComments ? (
+          {allComments.length !== 0 ? (
             allComments.map((comment, index) => (
               <div key={index} className="mb-2">
                 <div className="text-lg font-semibold">{comment.username}</div>
@@ -49,7 +52,7 @@ const CommentModal = ({ comments, onClose }) => {
             </button>
           </div>
         ) : (
-          <p className="text-center">LOGIN TO COMMENT</p>
+          <button className="text-white bg-black py-3 rounded-md w-full mt-4 mx-auto" onClick={() => navigate('/signin')}>Login To Comment</button>
         )}
       </div>
     </div>
