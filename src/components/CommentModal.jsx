@@ -4,9 +4,10 @@ const CommentModal = ({ comments, onClose }) => {
   const [allComments, setAllComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
   const username = JSON.parse(localStorage.getItem("session")).name;
+  const logged =
+    JSON.parse(localStorage.getItem("session")).name === "" ? false : true;
 
   const submitComment = () => {
-    
     allComments.push({ username, comment: newComment });
     setNewComment("");
   };
@@ -32,20 +33,24 @@ const CommentModal = ({ comments, onClose }) => {
             <p>No comments yet.</p>
           )}
         </div>
-        <div className="mt-4">
-          <textarea
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Write a comment..."
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-          ></textarea>
-          <button
-            className="mt-2 w-full bg-gray-900 text-white py-2 rounded-md"
-            onClick={submitComment}
-          >
-            Submit
-          </button>
-        </div>
+        {logged ? (
+          <div className="mt-4">
+            <textarea
+              className="w-full p-2 border border-gray-300 rounded-md"
+              placeholder="Write a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            ></textarea>
+            <button
+              className="mt-2 w-full bg-gray-900 text-white py-2 rounded-md"
+              onClick={submitComment}
+            >
+              Submit
+            </button>
+          </div>
+        ) : (
+          <p className="text-center">LOGIN TO COMMENT</p>
+        )}
       </div>
     </div>
   );
