@@ -7,7 +7,7 @@ let data = {
       title: "The Future of AI: Trends You Need to Know About",
       category: "Technology",
       img: "https://imagetolink.com/ib/2XcJk744yq.png",
-      comments: [{ username: "Yoseph", comment: "HEllo" }],
+      comments: [],
       body: `Hey tech lovers! AI is changing everything, from how we drive to how we stay healthy. Curious about what’s next? Let's dive into the coolest AI trends, like smarter machine learning and chatbots that can hold real conversations. Plus, we’ll chat about why ethics in AI is more important than ever. Get ready to be amazed by the future of tech!`,
     },
     {
@@ -17,7 +17,7 @@ let data = {
       title: "Superfoods Spotlight: Eat Your way to better Health",
       category: "Nutrition",
       img: "https://imagetolink.com/ib/rHFrEKdid9.png",
-      comments: [{ username: "Yoseph 2", comment: "HEllo2" }],
+      comments: [],
       body: "Ready to supercharge your diet? Superfoods are packed with nutrients and can seriously boost your health. We’re breaking down the benefits of superstar foods like kale, quinoa, and chia seeds, and sharing yummy recipes to help you add them to your meals. Let’s get healthy and deliciously nutritious together!",
     },
     {
@@ -27,7 +27,7 @@ let data = {
       title: "Eco-Chic: How to Build a Sustainable Wardrobe",
       category: "Fashion",
       img: "https://imagetolink.com/ib/3CzRygD91e.png",
-      comments: [{ username: "Yoseph3", comment: "HEllo3" }],
+      comments: [],
       body: "Fashionistas, it’s time to go green! Building a sustainable wardrobe is easier than you think. We’ve got tips on choosing eco-friendly fabrics, finding ethical brands, and making the most of what you already own. Look fabulous and feel good about your fashion choices with our guide to sustainable style",
     },
 
@@ -38,7 +38,7 @@ let data = {
       title: "Exploring the Reniassance: The birth of Perspective",
       category: "Art",
       img: "https://imagetolink.com/ib/n6BckqE9Jm.png",
-      comments: [{ username: "Yoseph4", comment: "HEllo4" }],
+      comments: [],
       body: "The Renaissance era was a time of remarkable artistic innovation. One of the most significant breakthroughs was the development of perspective in painting, which gave depth and realism to two-dimensional works. This post delves into the history of perspective, its pioneers like Leonardo da Vinci and Filippo Brunelleschi, and how it revolutionized the way we perceive art.",
     },
 
@@ -49,7 +49,7 @@ let data = {
       title: "Mindfulness 101: Easy Practice to Bring calm into your Life",
       category: "Mindfulness",
       img: "https://imagetolink.com/ib/VQwfgDKytV.png",
-      comments: [{ username: "Yosep5", comment: "HEllo5" }],
+      comments: [],
       body: "Feeling stressed? Mindfulness can help you find your zen. In this beginner’s guide, we’ll share simple mindfulness exercises you can do anywhere, anytime. From deep breathing to body scans, these tips will help you stay present and peaceful, no matter how hectic your day gets. Start your mindfulness journey today!",
     },
   ],
