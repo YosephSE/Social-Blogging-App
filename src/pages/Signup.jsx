@@ -8,6 +8,7 @@ function Signup({data , dataChange}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const navigate = useNavigate();
@@ -19,24 +20,30 @@ function Signup({data , dataChange}) {
       return;
     }
 
-    const userData = {
-      name,
-      email,
-      password,
-      profilePicture,
-    };
+    const userExists = data.filter(user => user.email === email)
+    if(userExists){
+      setError('Account exists please login!');
+    }
+    else {
+      const userData = {
+        name,
+        email,
+        password,
+        profilePicture,
+      };
 
-    let users = data;
+      let users = data;
 
-    
-    users.push(userData);
+      
+      users.push(userData);
 
-    dataChange(prevData => ({
-      ...prevData,
-      users: users
-    }))
+      dataChange(prevData => ({
+        ...prevData,
+        users: users
+      }))
 
-    navigate('/signin');
+      navigate('/signin');
+    }
   };
 
   return (
@@ -91,6 +98,9 @@ function Signup({data , dataChange}) {
               required
             />
           </div>
+          {error && (
+            <p className="text-red-500 text-xs italic mb-4">{error}</p>
+          )}
           <div className="flex items-center justify-between">
             <button
               className="bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
