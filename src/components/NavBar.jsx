@@ -11,7 +11,6 @@ const NavBar = ({id}) =>{
         }
         localStorage.setItem("session", JSON.stringify(user))
         navigate("/")
-        location.reload()
     }
 
     return (
