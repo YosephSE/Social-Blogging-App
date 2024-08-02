@@ -26,7 +26,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Blogs data = {userData} />} />
+          <Route path="/" element={<Blogs data = {userData} />} dataChange = {setUserData} />
           <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
