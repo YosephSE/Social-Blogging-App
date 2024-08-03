@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import closeIcon from '../assets/close.png'
 
 const CommentModal = ({ comments, onClose }) => {
   const navigate = useNavigate()
@@ -20,9 +21,9 @@ const CommentModal = ({ comments, onClose }) => {
       <div className="bg-white rounded-lg shadow-lg max-w-lg w-[95%] p-4">
         <div className="flex justify-between items-center pb-2 border-b">
           <h2 className="text-xl font-bold">Comments</h2>
-          <button onClick={onClose} className="text-red-500">
-            Close
-          </button>
+          <span onClick={onClose} className="text-red-500">
+            <img className="w-10" src={closeIcon} alt="close comments" />
+          </span>
         </div>
         <div className="mt-4">
           {allComments.length !== 0 ? (
