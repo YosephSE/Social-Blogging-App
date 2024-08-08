@@ -1,46 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import profilePicture from "../assets/profilepicture.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+import api from "../../api/users";
+import axios from "axios";
 
-function Signup({ data, dataChange }) {
+
+function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [preview, setPreview] = useState(null)
 
   const navigate = useNavigate();
+  const {refreshStatus} = useAuth();
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    axios.get(profilePicture, { responseType: 'blob' })
+      .then(response => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreview(reader.result);
+        };
+        reader.readAsDataURL(response.data);
+      })
+      .catch(error => console.error('Error:', error));
+  }, []);
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
 
-    const userExists = data.filter((user) => user.email === email);
-    if (userExists.length === 0) {
-      const userData = {
-        name,
-        email,
-        password,
-        profilePicture,
-      };
+    const userData = {
+      name,
+      email,
+      password,
+      profilePicture: preview,
+    };
 
-      let users = data;
-
-      users.push(userData);
-
-      dataChange((prevData) => ({
-        ...prevData,
-        users: users,
-      }));
-
-      navigate("/signin");
-    } else {
-      setError("Account exists please login!");
+    try{
+      await api.post('/', userData)
+      refreshStatus()
+      navigate('/')
+    } catch(err){
+      setError(err.response.data.message)
     }
   };
 

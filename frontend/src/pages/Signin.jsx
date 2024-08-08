@@ -2,29 +2,26 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { Link } from "react-router-dom";
+import { useAuth } from '../AuthContext';
+import api from '../../api/users'
 
-function Signin({data, dataChange}) {
+function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const {refreshStatus} = useAuth();
 
-  const handleLogin = () => {
-    const users = data;
-    const user = users.find(user => user.email === email && user.password === password);
-    if (user) {
-      navigate('/');
-      const session = { 
-        name: user.name
-      }
-      dataChange(prevData => (
-        {
-          ...prevData,
-          session: session
-        }
-      ))
-    } else {
-      setError('Invalid email or password');
+  const handleLogin = async () => {
+    const userData = {email, password}
+    setError('')
+    try{
+      await api.post('/auth', userData)
+      setError('')
+      refreshStatus()
+      navigate('/')
+    } catch(err){
+      setError(err.response.data.message)
     }
   };
   return (
