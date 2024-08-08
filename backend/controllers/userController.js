@@ -1,6 +1,8 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+import jwt from 'jsonwebtoken'
+
 
 const status = asyncHandler(async (req,res) => {
   const token = req.cookies.jwt;
@@ -39,11 +41,11 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User Already Exists");
   }
 
-  const user = await User.create({ name, email, password, profilePicture });
+  const user = await User.create({ name, email, password, profilePicture});
 
   if (user) {
     generateToken(res, user._id);
-    res.status(201).json({ _id: user._id, name: user.name, email: user.email, profilePicture: user.profilePicture });
+    res.status(201).json({ _id: user._id, name: user.name, email: user.email, profilePicture: user.profilePicture});
   } else {
     throw new Error("Invalid user Data");
   }

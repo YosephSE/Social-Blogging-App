@@ -5,13 +5,11 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [status, setStatus] = useState({ loggedIn: false, user: '' });
-  const[refresh, setRefresh] = useState(true)
   useEffect(() => {
     const checkStatus = async () => {
       try {
         const response = await api.get('/status');
         setStatus({ loggedIn: response.data.loggedIn, user: response.data.user });
-        
       } catch (err) {
         setStatus({ loggedIn: false, user: '' });
       }
@@ -22,6 +20,7 @@ export const AuthProvider = ({ children }) => {
   const refreshStatus = async () => {
     try {
       const response = await api.get('/status');
+      console.log(response.data)
       setStatus({ loggedIn: response.data.loggedIn, user: response.data.user });
     } catch (err) {
       setStatus({ loggedIn: false, user: '' });
