@@ -10,6 +10,7 @@ const Header = ({dataChange, page, data}) => {
         document.getElementById("hamburgerBtn").classList.toggle('toggle-btn')
         document.getElementById("mobile-nav-bar").classList.toggle('block')
         document.getElementById("mobile-nav-bar").classList.toggle('hidden')
+        document.querySelectorAll('.nav').forEach(element => {element.classList.contains('block') && element.classList.replace('block','hidden')})
     }
     return (
         <>
@@ -29,6 +30,9 @@ const Header = ({dataChange, page, data}) => {
                 </ul>
             </nav>
         </div>
+        <nav className='absolute list-none left-2 max-w-72 top-[80px] lg:left-auto lg:right-5 bg-white'>
+            <NavBar id='profile' handle={toggleMenu}/>
+        </nav>
         <nav id="mobile-nav-bar" className='w-36 absolute top-[80px] right-2 hidden lg:hidden z-50'>
             <ul>
                 <NavBar id="mobile" />
