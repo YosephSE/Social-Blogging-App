@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, createContext} from "react"
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import MyPosts from "./pages/MyPosts";
@@ -7,9 +7,13 @@ import Signup from "./pages/Signup";
 import Authors from "./pages/Authors";
 import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
+import UpdateProfile from "./pages/UpdateProfile";
 import data  from "../data";
 
+
 function App() {
+
+  const authContext = createContext({loggedIn: false, user:''})
 
   const[userData, setUserData] = useState({
     users: JSON.parse(localStorage.getItem("users")) || data.users,
@@ -30,8 +34,9 @@ function App() {
           <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
-          <Route path="/signin" element={<Signin data = {userData.users} dataChange = {setUserData}/>} />
-          <Route path="/signup" element={<Signup data = {userData.users} dataChange = {setUserData}/>} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/updateprofile" element={<UpdateProfile />}/>
           <Route path="/myposts" element={<MyPosts data = {userData} dataChange = {setUserData}/>} />
         </Routes>
     </Router>
