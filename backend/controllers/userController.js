@@ -2,6 +2,20 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 
+const status = asyncHandler(async (req,res) => {
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.json({ loggedIn: false });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.userId) 
+    res.json({ loggedIn: true, user: user.name});
+  } catch (error) {
+    res.json({ loggedIn: false });
+  }
+})
+
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -78,6 +92,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 });
 
 export {
+  status,
   authUser,
   registerUser,
   logoutUser,
