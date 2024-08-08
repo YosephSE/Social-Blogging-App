@@ -62,18 +62,9 @@ function Blog(props) {
   const diff = calculateTimeElapsed();
 
   return (
-    <div className="blog bg-white p-3 rounded-3xl flex flex-col ">
-      <div className="flex-grow">
-        <img src={props.img} alt="Blog Img" className="rounded-3xl" />
-        <div className="title text-xl font-bold pt-4 text-justify">
-          {props.title}
-        </div>
-        <div className="detail justify-between py-4 text-justify">
-          {props.body}
-        </div>
-      </div>
-      <div className="mt-auto">
-        <div className="author flex py-3">
+    <div className="blog bg-white px-3 py-6 max-w-96 md:max-w-full rounded-3xl gap-5 grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-10 ">
+      <div className="flex flex-col order-last lg:order-first ml-3">
+        <div className="author flex items-center">
           <img
             src={props.profilePicture}
             alt="author profile"
@@ -88,8 +79,17 @@ function Blog(props) {
             <div className="date px-3">{diff}</div>
           </div>
         </div>
+      <div className="flex-grown">
+          <div className="title text-xl font-bold pt-4 text-justify">
+            {props.title}
+          </div>
+          <div className="detail justify-between py-4 text-justify">
+            {props.body}
+          </div>
+      </div>
+      <div className="mt-auto">
         <hr className=" bg-gray-700 w-full h-1 mb-3" />
-        <div className="raction flex justify-end">
+        <div className="flex justify-start">
           <img
             src={commentIcon}
             alt="comments"
@@ -111,17 +111,20 @@ function Blog(props) {
           <div className="catagory bg-slate-400 px-2 py-1 rounded-lg">
             {props.category}
           </div>
+            {isCommentModalOpen && (
+            <CommentModal
+              comments={comments}
+              onClose={closeCommentModal}
+              dataChange={props.dataChange}
+              />
+          )}
         </div>
+        </div>
+        </div>
+        <img src={props.img} alt="Blog Img" className="rounded-3xl w-full lg:min-h-[70%] px-1 lg:px-5" />
       </div>
 
-      {isCommentModalOpen && (
-        <CommentModal
-          comments={comments}
-          onClose={closeCommentModal}
-          dataChange={props.dataChange}
-        />
-      )}
-    </div>
+
   );
 }
 
