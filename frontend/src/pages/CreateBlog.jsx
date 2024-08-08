@@ -2,27 +2,19 @@ import React, { useEffect, useState} from "react";
 import ReactMde from "react-mde";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
-import { useNavigate, Navigate } from "react-router-dom";
-import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
-import { comment } from "postcss";
+import api from "../../api/posts"
 
-const CreateBlog = (props) => {
-    let logged = JSON.parse(localStorage.getItem("session")).name == "" ? false: true;
-    if (!logged){
-        return <Navigate to='/signin'  />
-    }
+const CreateBlog = () => {
     const navigate = useNavigate()
     const [postData, setPostData] = useState({
-        name:props.data,
-        id: nanoid(),
+        authorId:"",
         title: "",
         category: "",
         img:"",
-        body: "",
-        comments: [],
-        date: 0,
+        content: "",
     })
 
     function handleChange(event){
@@ -61,24 +53,15 @@ const CreateBlog = (props) => {
             body: text
         }))
     }
-
-    useEffect(() => {
-        const time = new Date().getTime()
-        setPostData(prevData => ({
-            ...prevData,
-            date: time
-        }))
-    },[])
     
-    function sumbit(event){
+    const sumbit = async (event) => {
         event.preventDefault();
-        props.dataChange(prevState =>(
-            {
-                ...prevState,
-                posts:[...prevState.posts, postData]
-            }
-        ))
-        navigate('/myposts')
+        try{
+            await api.post("/", postData)
+            navigate('/myposts')
+        }catch(err){
+            console.log(err)
+        }
     }
 
     return (
