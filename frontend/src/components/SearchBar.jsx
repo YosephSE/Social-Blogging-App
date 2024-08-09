@@ -10,7 +10,7 @@ const SearchComponent = ({search,page,data}) => {
     useEffect(() => {
         const filteredItems = data.filter((item) =>
             page === 'Authors'?
-            item.authorId.name.toLowerCase().includes(searchTerm.toLowerCase())
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
             :
             item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
