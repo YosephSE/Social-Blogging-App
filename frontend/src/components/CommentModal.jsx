@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import closeIcon from '../assets/close.png'
+import closeIcon from '../assets/close.png';
+import deleteIcon from '../assets/deleteicon.png'
+import { useAuth } from '../AuthContext';
+import api from "../../api/posts";
 
-const CommentModal = ({ comments, onClose }) => {
+const CommentModal = ({ comments, onClose, id}) => {
+  const { status } = useAuth()
   const navigate = useNavigate()
   const [allComments, setAllComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
-  const username = JSON.parse(localStorage.getItem("session")).name;
-  const logged =
-    JSON.parse(localStorage.getItem("session")).name === "" ? false : true;
 
-  const submitComment = () => {
-    allComments.push({ username, comment: newComment });
-    console.log(allComments)
-    setNewComment("");
+  const submitComment = async () => {
+    const finalComment = {
+      content: newComment
+    }
+    setAllComments(prevData => [...prevData, finalComment])
+    try{
+      await api.post(`/${id}/comment`, finalComment)
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   return (
@@ -28,16 +35,19 @@ const CommentModal = ({ comments, onClose }) => {
         <div className="mt-4">
           {allComments.length !== 0 ? (
             allComments.map((comment, index) => (
-              <div key={index} className="mb-2">
-                <div className="text-lg font-semibold">{comment.username}</div>
-                <p className="mt-1 text-gray-700">{comment.comment}</p>
+              <div key={index} className="mb-2 mx-8 flex justify-between items-center">
+                <div>
+                  <div className="text-lg font-semibold">{comment.username}</div>
+                  <p className="mt-1 text-gray-700">{comment.content}</p>
+                </div>
+                <img src={deleteIcon} alt="Delte Icon" className="h-6"/>
               </div>
             ))
           ) : (
             <p>No comments yet.</p>
           )}
         </div>
-        {logged ? (
+        {status.loggedIn ? (
           <div className="mt-4">
             <textarea
               className="w-full p-2 border border-gray-300 rounded-md"

@@ -13,7 +13,6 @@ const Blogs = () => {
       try{
       const response = await api.get('/')
       const resData  = response.data;
-      console.log(resData)
       setPosts(resData)
       setSearch(resData)
     } catch (error) {

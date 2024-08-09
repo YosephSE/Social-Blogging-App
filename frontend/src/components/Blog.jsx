@@ -11,9 +11,7 @@ import CommentModal from "./CommentModal";
 function Blog(props) {
   const [like, setLike] = useState(false);
   const [book, setBook] = useState(false);
-  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
-  const [comments, setComments] = useState(props.comments);
-
+  
   const navigate = useNavigate()
   const toggleLike = () => {
     setLike((prevLike) => !prevLike);
@@ -24,14 +22,6 @@ function Blog(props) {
   };
 
   const bookImg = book ? bookmarked : bookmarking;
-
-  const openCommentModal = () => {
-    setIsCommentModalOpen(true);
-  };
-
-  const closeCommentModal = () => {
-    setIsCommentModalOpen(false);
-  };
 
   const calculateTimeElapsed = () => {
     const postDate = props.date;
@@ -99,7 +89,6 @@ function Blog(props) {
             src={commentIcon}
             alt="comments"
             className="h-6 px-1"
-            onClick={openCommentModal}
           />
           <img
             src={likeImg}
@@ -116,13 +105,6 @@ function Blog(props) {
           <div className="catagory bg-slate-400 px-2 py-1 rounded-lg">
             {props.category}
           </div>
-            {isCommentModalOpen && (
-            <CommentModal
-              comments={comments}
-              onClose={closeCommentModal}
-              dataChange={props.dataChange}
-              />
-          )}
         </div>
         </div>
         </div>

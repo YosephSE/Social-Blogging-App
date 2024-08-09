@@ -18,7 +18,6 @@ const SinglePost = () => {
     const [like, setLike] = useState(false);
     const [book, setBook] = useState(false);
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
-    const [comments, setComments] = useState(post.comments);
     const { id } = useParams()
 
     useEffect(() => {
@@ -90,7 +89,7 @@ const SinglePost = () => {
         {isLoading ?
           <LoadingPage />
           :
-          <div className="blog bg-white w-[90%] my-4 mx-auto flex-grow gap-5 grid grid-cols-1 items-center lg:gap-10">
+          <div className="blog bg-white w-[90%] my-4 mt-10 mx-auto flex-grow gap-5 grid grid-cols-1 items-center lg:gap-10">
           <div className="flex px-3 py-3 flex-col order-last ml-3">
             <div className="author flex items-center">
               <img
@@ -141,9 +140,9 @@ const SinglePost = () => {
               </div>
                 {isCommentModalOpen && (
                 <CommentModal
-                  comments={comments}
+                  comments={post.comments}
                   onClose={closeCommentModal}
-                  dataChange={post.dataChange}
+                  id = {id}
                   />
               )}
             </div>
