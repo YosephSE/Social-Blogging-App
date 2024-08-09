@@ -120,19 +120,19 @@ const SinglePost = () => {
               <img
                 src={commentIcon}
                 alt="comments"
-                className="h-6 px-1"
+                className="h-6 px-1 cursor-pointer"
                 onClick={openCommentModal}
               />
               <img
                 src={likeImg}
                 alt="Like"
-                className="h-6 px-1"
+                className="h-6 px-1 cursor-pointer"
                 onClick={toggleLike}
               />
               <img
                 src={bookImg}
                 alt="Bookmark"
-                className="h-7 px-1"
+                className="h-7 px-1 cursor-pointer"
                 onClick={toggleBook}
               />
               <div className="catagory bg-slate-400 px-2 py-1 rounded-lg">
