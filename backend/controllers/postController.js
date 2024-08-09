@@ -33,7 +33,9 @@ const deletePost = async (req, res) => {
 
 const createPost = async (req, res) => {
   try {
-    const { title, content, authorId, category, image } = req.body;
+    const authorId = req.user._id;
+    const { title, content, category, image } = req.body;
+
     if (!title || !content || !authorId || !category || !image) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -63,7 +65,7 @@ const allPosts = async (req, res) => {
   try {
     const posts = await Post.find().populate({
       path: "authorId",
-      select: "name",
+      select: "name profilePicture",
     });
     res.json(posts);
   } catch (err) {
@@ -200,4 +202,36 @@ const deleteComment = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-export { deletePost, createPost, editPost, singlePost, allPosts, addComment, deleteComment };
+
+const myPosts = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    if (!userId) {
+      return res.status(404).json({ message: "User Not Found" });
+    }
+
+    const userPosts = await Post.find({
+      authorId: userId,
+    });
+
+    if (userPosts.length === 0) {
+      return res.status(200).json({ message: "No posts found for this user" });
+    }
+
+    res.status(200).json(userPosts);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+export {
+  deletePost,
+  createPost,
+  editPost,
+  singlePost,
+  allPosts,
+  addComment,
+  deleteComment,
+  myPosts,
+};
