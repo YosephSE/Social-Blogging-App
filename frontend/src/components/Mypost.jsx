@@ -6,7 +6,7 @@ function MyPost({ id, img, title, handleChange }) {
   const navigate = useNavigate()
 
   const editPost = async () => {
-    navigate(`editblog/${id}`)
+    navigate(`/editblog/${id}`)
   }
 
   const deletePost = async() => {

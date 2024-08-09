@@ -2,16 +2,33 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactMde from "react-mde";
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
+import api from "../../api/posts";
+import LoadingPage from "../components/Loading";
 
 
 
-const EditBlog = ({data, dataChange}) => {
+const EditBlog = () => {
     const navigate = useNavigate()
-    const userPost = data.posts.filter(post => (post.name === data.session.name && post.id === data.session.postId))
-    const [postData, setPostData] = useState(userPost[0])
+    const [isLoading, setIsLoading] = useState(true)
+    const [postData, setPostData] = useState({})
     const handlePageRender = useRef(false)
+    const { id } = useParams()
+
+    useEffect(() => {
+        const getPost = async () => {
+            const response = await api.get(`/${id}`)
+            const resData = response.data.post
+            setPostData(resData)
+            setIsLoading(false)
+        }
+        try{
+            getPost()
+        } catch(err) {
+            console.log(err)
+        }
+    },[])
 
     function handleChange(event){
         const {name, value} = event.target
@@ -22,7 +39,7 @@ const EditBlog = ({data, dataChange}) => {
     }
 
     const [image, setImage] = useState(null);
-    const [preview, setPreview] = useState(userPost[0].img);
+    const [preview, setPreview] = useState(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -40,7 +57,7 @@ const EditBlog = ({data, dataChange}) => {
         if(handlePageRender){
             setPostData(prevData => ({
                 ...prevData,
-                img: preview
+                image: preview
             }))
         }
 
@@ -51,69 +68,65 @@ const EditBlog = ({data, dataChange}) => {
     function markDownChange(text){
         setPostData(prevData => ({
             ...prevData,
-            body: text
+            content: text
         }))
     }
 
-    function sumbit(){
-        const updatedData = data.posts.map((post) => {
-            if (post.name === data.session.name && post.id === data.session.postId){
-                return postData
-            } else{
-                return post
-            }
-        })
-
-        dataChange(prevState =>(
-            {
-                ...prevState,
-                posts: updatedData
-            }
-        ))
-        navigate('/myposts')
+    const sumbit = async() => {
+        try{
+            await api.put(`/${id}`, postData)
+            navigate('/myposts')
+        } catch(err){
+            console.log(err)
+        }
     }
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col">
             <Header />
-            <div className="bg-[#cccccc] content-center">
-                <div className="max-w-96 m-auto p-2">
-                    <h1 className="text-3xl">Edit Post</h1>
-                    <form onSubmit={sumbit}>
-                        <input 
-                            type="text" 
-                            placeholder="Title" 
-                            className="block p-2 w-full rounded-md mt-4"
-                            onChange={handleChange}
-                            name = "title"
-                            value={postData.title}
-                            required
-                        />
-                        <select name="category" onChange={handleChange} value={postData.category} className="w-full p-2 my-4 rounded-md">
-                            <option value="" disabled>Choose Category</option>
-                            <option value="technology">Technology</option>
-                            <option value="Art">Art</option>
-                            <option value="Education">Education</option>
-                            <option value="Nutrition">Nutrition</option>
-                            <option value="Fashion">Fashion</option>
-                            <option value="Music">Music</option>
-                            <option value="Mindfulness">Mindfulness</option>
-                            <option value="uncatagorized">Uncatagorized</option>
-                        </select>
-                        <ReactMde
-                            value={postData.body}
-                            minPreviewHeight={20}
-                            minEditorHeight={20}
-                            heightUnits="vh"
-                            disablePreview
-                            onChange={markDownChange}
-                        />
-                        <img src={postData.img} alt="Post Image" className="w-full my-5"/>
-                        <input className="mt-4 block"type="file" accept="image/*" onChange={handleImageChange} />
-                        <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Update</button>
-                    </form>
+            {
+                isLoading?
+                <LoadingPage />
+                :
+                <div className="content-center flex-grow">
+                    <div className="max-w-96 m-auto p-2">
+                        <h1 className="text-3xl">Edit Post</h1>
+                        <form onSubmit={sumbit}>
+                            <input 
+                                type="text" 
+                                placeholder="Title" 
+                                className="block p-2 w-full rounded-md mt-4"
+                                onChange={handleChange}
+                                name = "title"
+                                value={postData.title}
+                                required
+                            />
+                            <select name="category" onChange={handleChange} value={postData.category} className="w-full p-2 my-4 rounded-md">
+                                <option value="" disabled>Choose Category</option>
+                                <option value="technology">Technology</option>
+                                <option value="Art">Art</option>
+                                <option value="Education">Education</option>
+                                <option value="Nutrition">Nutrition</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Music">Music</option>
+                                <option value="Mindfulness">Mindfulness</option>
+                                <option value="uncatagorized">Uncatagorized</option>
+                            </select>
+                            <ReactMde
+                                value={postData.content}
+                                minPreviewHeight={20}
+                                minEditorHeight={20}
+                                heightUnits="vh"
+                                disablePreview
+                                onChange={markDownChange}
+                            />
+                            <img src={postData.image} alt="Post Image" className="w-full my-5"/>
+                            <input className="mt-4 block"type="file" accept="image/*" onChange={handleImageChange} />
+                            <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Update</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
             <Footer />
         </div>
     )
