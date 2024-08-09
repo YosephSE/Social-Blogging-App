@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import author from "../assets/image.png";
 import commentIcon from "../assets/comment.png";
 import liked from "../assets/like.png";
@@ -13,6 +14,7 @@ function Blog(props) {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const [comments, setComments] = useState(props.comments);
 
+  const navigate = useNavigate()
   const toggleLike = () => {
     setLike((prevLike) => !prevLike);
   };
@@ -61,8 +63,11 @@ function Blog(props) {
 
   const diff = calculateTimeElapsed();
 
+  const handleClick = () =>{
+    navigate(`/singlepost/${props.id}`)
+  }
   return (
-    <div className="blog bg-white px-3 py-6 max-w-96 md:max-w-full rounded-3xl gap-5 grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-10 ">
+    <div onClick={handleClick} className="blog bg-white px-3 py-6 max-w-96 md:max-w-full rounded-3xl gap-5 grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-10 hover:shadow-lg hover:cursor-pointer ">
       <div className="flex flex-col order-last lg:order-first ml-3">
         <div className="author flex items-center">
           <img

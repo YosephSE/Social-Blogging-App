@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Blogs data = {userData} />} dataChange = {setUserData} />
           <Route path="/createblog" element={<CreateBlog />} />
-          <Route path="/singlepost:id" element={<SinglePost />}/>
+          <Route path="/singlepost/:id" element={<SinglePost />}/>
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
           <Route path="/signin" element={<Signin />} />

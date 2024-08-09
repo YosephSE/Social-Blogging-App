@@ -28,7 +28,7 @@ const Blogs = () => {
     <div className="flex flex-col min-h-screen">
       <Header page='Blogs' data = {posts} dataChange = {setSearch} />
       <Chatbot />
-      <div className="md:grid-cols-[220px_1fr] pt-10 md:grid md:items-start py-4 flex flex-col items-center bg-gray-300">
+      <div className="md:grid-cols-[220px_1fr] pt-10 md:grid md:items-start py-4 flex flex-col items-center">
         <ul className="mx-5 my-12 hidden flex-col gap-2 font-semibold md:flex">
           <li className="text-2xl font-bold">All Categories</li>
           <li>All Blogs</li>
@@ -47,6 +47,7 @@ const Blogs = () => {
                 name={post.authorId.name}
                 date={post.createdAt}
                 key={post._id}
+                id = {post._id}
                 title={post.title}
                 category={post.category}
                 body={post.content}
