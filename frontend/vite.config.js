@@ -4,9 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "Social-Blogging-App",
+  base: "Social-Blogging-app-front-end",
   server:{
-    port:3000,
     proxy:{
       '/api': {
         target: 'https://mern-w0x6.onrender.com',

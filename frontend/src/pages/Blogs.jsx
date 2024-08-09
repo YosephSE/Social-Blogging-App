@@ -3,9 +3,11 @@ import Blog from "../components/Blog";
 import Header from "../components/Header";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
-import api from "../../api/posts"
+import api from "../../api/posts";
+import LoadingPage from "../components/Loading";
 
 const Blogs = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState([])
   const [search, setSearch] = useState([])
   useEffect(() => {
@@ -15,8 +17,10 @@ const Blogs = () => {
       const resData  = response.data;
       setPosts(resData)
       setSearch(resData)
+      setIsLoading(false)
     } catch (error) {
       console.error("Failed to fetch posts", error);
+      setIsLoading(false)
     }
     }
     getPosts();
@@ -27,7 +31,11 @@ const Blogs = () => {
     <div className="flex flex-col min-h-screen">
       <Header page='Blogs' data = {posts} dataChange = {setSearch} />
       <Chatbot />
-      <div className="md:grid-cols-[220px_1fr] pt-10 md:grid md:items-start py-4 flex flex-col items-center">
+      {
+        isLoading?
+        <LoadingPage />
+        :
+        <div className="md:grid-cols-[220px_1fr] pt-10 flex-grow md:grid md:items-start py-4 flex flex-col items-center">
         <ul className="mx-5 my-12 hidden flex-col gap-2 font-semibold md:flex">
           <li className="text-2xl font-bold">All Categories</li>
           <li>All Blogs</li>
@@ -58,6 +66,7 @@ const Blogs = () => {
           })}
         </div>
       </div>
+      }
       <Footer />
     </div>
   );
