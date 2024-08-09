@@ -60,7 +60,7 @@ const Blogs = () => {
                 body={post.content}
                 comments={post.comments}
                 profilePicture={post.authorId.profilePicture}
-                img={post.img}
+                img={post.image}
               />
             );
           })}
