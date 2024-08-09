@@ -13,7 +13,7 @@ const CreateBlog = () => {
         authorId:"",
         title: "",
         category: "",
-        img:"",
+        image:"",
         content: "",
     })
 
@@ -43,14 +43,14 @@ const CreateBlog = () => {
     useEffect( () => {
         setPostData(prevData => ({
             ...prevData,
-            img: preview
+            image: preview
         }))
     }, [preview])
 
     function markDownChange(text){
         setPostData(prevData => ({
             ...prevData,
-            body: text
+            content: text
         }))
     }
     
@@ -65,10 +65,10 @@ const CreateBlog = () => {
     }
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col">
             <Header />
             <Chatbot />
-            <div className="bg-[#cccccc] content-center">
+            <div className="content-center flex-grow">
                 <div className="max-w-96 m-auto p-2">
                     <h1 className="text-3xl">Create Post</h1>
                     <form onSubmit={sumbit}>
@@ -93,14 +93,14 @@ const CreateBlog = () => {
                             <option value="uncatagorized">Uncatagorized</option>
                         </select>
                         <ReactMde
-                            value={postData.body}
+                            value={postData.content}
                             minPreviewHeight={20}
                             minEditorHeight={20}
                             heightUnits="vh"
                             disablePreview
                             onChange={markDownChange}
                         />
-                        {postData.img && <img src={postData.img} alt="Post Image" className="w-full my-5"/>}
+                        {postData.image && <img src={postData.image} alt="Post Image" className="w-full my-5"/>}
                         <input className="mt-4 block"type="file" accept="image/*" id = "Image-input" onChange={handleImageChange}/>
                         <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Create</button>
                     </form>

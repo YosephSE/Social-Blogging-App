@@ -1,31 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import api from "../../api/posts";
 import { useNavigate } from "react-router-dom";
 
-function MyPost({ title, img, dataChange, id }) {
+function MyPost({ id, img, title, handleChange }) {
   const navigate = useNavigate()
-  function handleChange(){
-    dataChange(prevData => (
-      {
-        ...prevData,
-        session: {
-          ...prevData.session,
-          postId: id
-        }
-      }
-    ))
-    navigate("/editblog") 
+
+  const editPost = async () => {
+    navigate(`editblog/${id}`)
   }
 
-  function deletePost(){
-
-    dataChange(prevData => {
-      const updatedPosts = prevData.posts.filter(post => post.id !== id)
-      return(
-        {
-        ...prevData,
-        posts: updatedPosts
-      })
-  })
+  const deletePost = async() => {
+    handleChange(true)
+    try{
+      await api.delete(`/${id}`)
+    } catch (err){
+      console.log(err)
+    }
   }
   
   return (
@@ -42,7 +32,7 @@ function MyPost({ title, img, dataChange, id }) {
           </p>
         </div>
         <div className="buttons flex flex-col ml-auto">
-          <button className="bg-white w-14 py-2 rounded-lg my-auto mx-1 border-black border-2" onClick={handleChange}>
+          <button className="bg-white w-14 py-2 rounded-lg my-auto mx-1 border-black border-2" onClick={editPost}>
              Edit
           </button>
           <button className="bg-black text-white w-14 py-2 rounded-lg mx-1 my-auto border-black border-2 mr-2" onClick={deletePost}>
