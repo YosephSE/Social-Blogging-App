@@ -1,11 +1,33 @@
 import React, { useEffect, useState} from "react";
-import ReactMde from "react-mde";
-import 'react-mde/lib/styles/css/react-mde-all.css';
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
 import api from "../../api/posts"
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+  
+const formats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'list',
+    'bullet',
+    'link',
+    'image',
+];
 
 const CreateBlog = () => {
     const navigate = useNavigate()
@@ -92,13 +114,13 @@ const CreateBlog = () => {
                             <option value="Mindfulness">Mindfulness</option>
                             <option value="uncatagorized">Uncatagorized</option>
                         </select>
-                        <ReactMde
+                        <ReactQuill
+                            modules={modules}
+                            formats={formats}
                             value={postData.content}
-                            minPreviewHeight={20}
-                            minEditorHeight={20}
-                            heightUnits="vh"
-                            disablePreview
                             onChange={markDownChange}
+                            className="bg-white"
+                            required
                         />
                         {postData.image && <img src={postData.image} alt="Post Image" className="w-full my-5"/>}
                         <input className="mt-4 block"type="file" accept="image/*" id = "Image-input" onChange={handleImageChange}/>
