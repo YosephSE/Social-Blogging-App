@@ -67,7 +67,7 @@ const CommentModal = ({ comments, onClose, id}) => {
             !isLoading && allComments.map((comment, index) => (
               <div key={index} className="mb-2 mx-8 flex justify-between items-center">
                 <div>
-                  <div className="text-lg font-semibold">{comment.username}</div>
+                  <div className="text-lg font-semibold">{comment.authorId.name}</div>
                   <p className="mt-1 text-gray-700">{comment.content}</p>
                 </div>
                 <img src={deleteIcon} alt="Delete Icon" className="h-6 hover:cursor-pointer" onClick={() => deleteComment(comment._id)}/>
