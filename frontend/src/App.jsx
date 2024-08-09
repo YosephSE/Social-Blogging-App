@@ -8,6 +8,7 @@ import Authors from "./pages/Authors";
 import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
 import UpdateProfile from "./pages/UpdateProfile";
+import SinglePost from "./pages/SinglePost"
 import data  from "../data";
 
 
@@ -31,7 +32,8 @@ function App() {
     <Router>
         <Routes>
           <Route path="/" element={<Blogs data = {userData} />} dataChange = {setUserData} />
-          <Route path="/createblog" element={<CreateBlog data={userData.session.name} dataChange = {setUserData} />} />
+          <Route path="/createblog" element={<CreateBlog />} />
+          <Route path="/singlepost:id" element={<SinglePost />}/>
           <Route path="/editblog" element={<EditBlog data = {userData} dataChange = {setUserData} />} />
           <Route path="/authors" element={<Authors data = {userData}/>} />
           <Route path="/signin" element={<Signin />} />
