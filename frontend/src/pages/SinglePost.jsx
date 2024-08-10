@@ -55,9 +55,10 @@ const SinglePost = () => {
       setIsCommentModalOpen(false);
     };
     const calculateTimeElapsed = () => {
-      const postDate = post.createdAt;
+      const postDate = new Date(post.createdAt);
+      const milli = postDate.getTime()
       const now = new Date().getTime();
-      const elapsed = now - postDate;
+      const elapsed = now - milli;
 
       const months = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 30));
       const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
@@ -93,7 +94,7 @@ const SinglePost = () => {
           <div className="flex px-3 py-3 flex-col order-last ml-3">
             <div className="author flex items-center">
               <img
-                src={post.authorId.name}
+                src={post.authorId.profilePicture}
                 alt="author profile"
                 className="w-16 h-16"
                 onError={(e) => {
@@ -110,8 +111,7 @@ const SinglePost = () => {
               <div className="title text-xl font-bold pt-4 text-justify">
                 {post.title}
               </div>
-              <div className="detail justify-between py-4 text-justify">
-                {post.content}
+              <div className="detail justify-between py-4 text-justify" dangerouslySetInnerHTML={{ __html: post.content}}>
               </div>
           </div>
           <div className="mt-auto">
@@ -140,7 +140,6 @@ const SinglePost = () => {
               </div>
                 {isCommentModalOpen && (
                 <CommentModal
-                  comments={post.comments}
                   onClose={closeCommentModal}
                   id = {id}
                   />

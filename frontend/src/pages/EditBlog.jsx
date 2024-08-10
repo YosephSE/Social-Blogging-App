@@ -93,8 +93,10 @@ const EditBlog = () => {
     }
 
     const sumbit = async() => {
+        setIsLoading(true)
         try{
             await api.put(`/${id}`, postData)
+            setIsLoading(false)
             navigate('/myposts')
         } catch(err){
             console.log(err)
@@ -109,7 +111,7 @@ const EditBlog = () => {
                 <LoadingPage />
                 :
                 <div className="content-center flex-grow">
-                    <div className="max-w-96 m-auto p-2">
+                    <div className="max-w-96 mx-auto my-10 p-2">
                         <h1 className="text-3xl">Edit Post</h1>
                         <form onSubmit={sumbit}>
                             <input 
@@ -137,11 +139,22 @@ const EditBlog = () => {
                                 formats={formats}
                                 value={postData.content}
                                 onChange={markDownChange}
-                                className="bg-white"
+                                className="bg-white h-64"
                                 required
                             />
                             <img src={postData.image} alt="Post Image" className="w-full my-5"/>
-                            <input className="mt-4 block"type="file" accept="image/*" onChange={handleImageChange} />
+                            <label className="block my-5">
+                                <input
+                                    type="file"
+                                    onChange={handleImageChange}
+                                    className="block w-full text-sm text-slate-500
+                                        file:py-2 file:px-4
+                                        file:rounded-xl file:border-0
+                                        file:text-base file:font-semibold
+                                        file:bg-slate-50 file:text-black"
+                                        required
+                                />
+                            </label>
                             <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Update</button>
                         </form>
                     </div>

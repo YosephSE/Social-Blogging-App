@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import LoadingPage from "../components/Loading"
 import api from "../../api/users";
+import { useAuth } from "../AuthContext";
 
 function UpdateProfile() {
+    const [isLoading, setIsLoading] = useState(true)
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [image, setImage] = useState(null);
     const [profilePicture, setProfilePicture] = useState(null);
+    const { refreshStatus } = useAuth()
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -20,6 +24,8 @@ function UpdateProfile() {
                 setProfilePicture(resData.profilePicture);
             } catch (err) {
                 console.error(`Error: ${err}`);
+            } finally{
+                setIsLoading(false)
             }
         };
         getUser();
@@ -38,6 +44,7 @@ function UpdateProfile() {
     };
 
     const handleSubmit = async (e) => {
+        setIsLoading(true)
         e.preventDefault();
         const user = {
             name,
@@ -47,16 +54,23 @@ function UpdateProfile() {
 
         try {
             await api.put('/profile', user);
+            refreshStatus()
             navigate('/')
         } catch (err) {
             console.error(`Error: ${err}`);
+        } finally{
+            setIsLoading(false)
         }
     };
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Header />
-            <div className="min-h-[calc(100vh-80px)] flex flex-col">
+            {
+                isLoading?
+                <LoadingPage />
+                :
+                <div className="flex-grow flex flex-col">
                 <div className="flex items-center justify-center bg-gray-200 w-full flex-grow">
                     <div className="w-full max-w-xs md:mt-3 mt-8">
                         <form
@@ -112,7 +126,9 @@ function UpdateProfile() {
                     </div>
                 </div>
             </div>
-        </>
+            }
+
+        </div>
     );
 }
 

@@ -6,7 +6,6 @@ import liked from "../assets/like.png";
 import notLiked from "../assets/like1.png";
 import bookmarking from "../assets/bookmark.png";
 import bookmarked from "../assets/bookmarked.png";
-import CommentModal from "./CommentModal";
 
 function Blog(props) {
   const [like, setLike] = useState(false);
@@ -24,9 +23,10 @@ function Blog(props) {
   const bookImg = book ? bookmarked : bookmarking;
 
   const calculateTimeElapsed = () => {
-    const postDate = props.date;
+    const postDate = new Date(props.date);
+    const milli = postDate.getTime()
     const now = new Date().getTime();
-    const elapsed = now - postDate;
+    const elapsed = now - milli;
 
     const months = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 30));
     const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
@@ -78,10 +78,9 @@ function Blog(props) {
           <div className="title text-xl font-bold pt-4 text-justify">
             {props.title}
           </div>
-          <div className="detail justify-between py-4 text-justify">
-            {props.body}
+          <div className="detail justify-between py-4 text-justify" dangerouslySetInnerHTML={{ __html: props.body }}>
           </div>
-      </div>
+      </div> 
       <div className="mt-auto">
         <hr className=" bg-gray-700 w-full h-1 mb-3" />
         <div className="flex justify-start">
@@ -108,7 +107,7 @@ function Blog(props) {
         </div>
         </div>
         </div>
-        <img src={props.img} alt="Blog Img" className="rounded-3xl w-full lg:min-h-[70%] px-1 lg:px-5" />
+        <img src={props.img} alt="Blog Img" className="rounded-3xl w-full lg:min-h-[70%] max-h-72 px-1 lg:px-5" />
       </div>
 
 
