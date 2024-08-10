@@ -1,5 +1,6 @@
 import Post from "../models/postModel.js";
 import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
 const deletePost = async (req, res) => {
@@ -82,19 +83,27 @@ const singlePost = async (req, res) => {
   }
 
   try {
-    const post = await Post.findOne({ _id: postId }).populate({
-      path: "authorId",
-      select: "name",
-    });
+    const post = await Post.findOne({ _id: postId })
+      .populate({
+        path: "authorId",
+        select: "name profilePicture",
+      })
+      .populate({
+        path: "comments.authorId",
+        select: "name profilePicture ",
+      });
 
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
     }
 
+    // Return the post with populated author and comments' author details
     res.status(200).json({ post });
   } catch (err) {
-    console.error("Error retrieving posts:", err);
-    res.status(500).json({ error: "An error occurred while retrieving posts" });
+    console.error("Error retrieving post:", err);
+    res
+      .status(500)
+      .json({ error: "An error occurred while retrieving the post" });
   }
 };
 
@@ -167,15 +176,17 @@ const addComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
   const { postId, commentId } = req.params;
+  const newCommentId = new mongoose.Types.ObjectId(commentId);
 
-  if (
-    !mongoose.Types.ObjectId.isValid(postId) ||
-    !mongoose.Types.ObjectId.isValid(commentId)
-  ) {
-    return res
-      .status(400)
-      .json({ message: "Invalid postId or commentId format" });
-  }
+
+  // if (
+  //   !mongoose.Types.ObjectId.isValid(postId) ||
+  //   !mongoose.Types.ObjectId.isValid(commentId)
+  // ) {
+  //   return res
+  //     .status(400)
+  //     .json({ message: "Invalid postId or commentId format" });
+  // }
 
   try {
     const post = await Post.findById(postId);
@@ -185,7 +196,7 @@ const deleteComment = async (req, res) => {
     }
 
     const commentIndex = post.comments.findIndex((comment) =>
-      comment._id.equals(commentId)
+      comment._id.equals(newCommentId)
     );
 
     if (commentIndex === -1) {

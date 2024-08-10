@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import profilePicture from "../assets/profilepicture.png";
 import { Link } from "react-router-dom";
+import LoadingPage from "../components/Loading";
 import { useAuth } from "../AuthContext";
 import api from "../../api/users";
 import axios from "axios";
 
 
 function Signup() {
+  const[isLoading, setIsLoading] = useState(true)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,10 +31,13 @@ function Signup() {
         reader.readAsDataURL(response.data);
       })
       .catch(error => console.error('Error:', error));
+      
+      setIsLoading(false)
   }, []);
 
 
   const handleSubmit = async (event) => {
+    setIsLoading(true)
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -52,13 +57,19 @@ function Signup() {
       navigate('/')
     } catch(err){
       setError(err.response.data.message)
+    } finally{
+      setIsLoading(false)
     }
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <div className="min-h-[calc(100vh-80px)] flex flex-col">
+      {
+        isLoading?
+        <LoadingPage />
+        :
+        <div className="flex-grow flex flex-col">
         <div className="flex items-center justify-center bg-gray-200 w-full flex-grow">
           <div className="w-full max-w-xs">
             <form
@@ -131,7 +142,9 @@ function Signup() {
           </div>
         </div>
       </div>
-    </>
+      }
+
+    </div>
   );
 }
 
