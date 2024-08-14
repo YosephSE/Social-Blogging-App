@@ -6,10 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "server": "nodemon backend/server.js",
-    "client": "npm run dev --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon backend/server.js"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +20,5 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
   }
 }

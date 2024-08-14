@@ -5,7 +5,8 @@ import Chatbot from "../components/Chatbot";
 import Footer from "../components/Footer";
 import api from "../../api/posts"
 import LoadingPage from "../components/Loading"
-import post from "../assets/post.png"
+import post from "../assets/post.png";
+import { useAuth } from "../AuthContext";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -32,6 +33,7 @@ const formats = [
 ];
 
 const CreateBlog = () => {
+    const { status } = useAuth()
     const [imageUploaded, setImageUploaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
@@ -42,6 +44,9 @@ const CreateBlog = () => {
         image:"",
         content: "",
     })
+
+    !status.loggedIn && navigate('/')
+
 
     function handleChange(event){
         const {name, value} = event.target

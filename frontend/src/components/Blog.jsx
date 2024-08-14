@@ -10,8 +10,8 @@ import bookmarked from "../assets/bookmarked.png";
 function Blog(props) {
   const [like, setLike] = useState(false);
   const [book, setBook] = useState(false);
-  
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
   const toggleLike = () => {
     setLike((prevLike) => !prevLike);
   };
@@ -24,7 +24,7 @@ function Blog(props) {
 
   const calculateTimeElapsed = () => {
     const postDate = new Date(props.date);
-    const milli = postDate.getTime()
+    const milli = postDate.getTime();
     const now = new Date().getTime();
     const elapsed = now - milli;
 
@@ -53,11 +53,16 @@ function Blog(props) {
 
   const diff = calculateTimeElapsed();
 
-  const handleClick = () =>{
-    navigate(`/singlepost/${props.id}`)
-  }
+  const handleClick = () => {
+    navigate(`/singlepost/${props.id}`);
+  };
+
+  const content = props.body.length > 600 ? props.body.slice(0,600) + " ..." : props.body;
   return (
-    <div onClick={handleClick} className="blog bg-white px-3 py-6 max-w-96 md:max-w-full rounded-3xl gap-5 grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-10 hover:shadow-lg hover:cursor-pointer ">
+    <div
+      onClick={handleClick}
+      className="blog bg-white px-3 py-6 max-w-96 md:max-w-full rounded-3xl gap-5 grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-10 hover:shadow-lg hover:cursor-pointer "
+    >
       <div className="flex flex-col order-last lg:order-first ml-3">
         <div className="author flex items-center">
           <img
@@ -65,7 +70,7 @@ function Blog(props) {
             alt="author profile"
             className="w-16 rounded-lg h-16"
             onError={(e) => {
-              e.target.onerror = null; // Prevents infinite loop if default image also fails
+              e.target.onerror = null;
               e.target.src = author;
             }}
           />
@@ -74,43 +79,43 @@ function Blog(props) {
             <div className="date px-3">{diff}</div>
           </div>
         </div>
-      <div className="flex-grown">
+        <div className="flex-grown">
           <div className="title text-xl font-bold pt-4 text-justify">
             {props.title}
           </div>
-          <div className="detail justify-between py-4 text-justify" dangerouslySetInnerHTML={{ __html: props.body }}>
+          <div
+            className="detail justify-between py-4 text-justify"
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
+        </div>
+        <div className="mt-auto">
+          <hr className=" bg-gray-700 w-full h-1 mb-3" />
+          <div className="flex justify-start">
+            <img src={commentIcon} alt="comments" className="h-6 px-1" />
+            <img
+              src={likeImg}
+              alt="Like"
+              className="h-6 px-1"
+              onClick={toggleLike}
+            />
+            <img
+              src={bookImg}
+              alt="Bookmark"
+              className="h-7 px-1"
+              onClick={toggleBook}
+            />
+            <div className="catagory bg-slate-400 px-2 py-1 rounded-lg">
+              {props.category}
+            </div>
           </div>
-      </div> 
-      <div className="mt-auto">
-        <hr className=" bg-gray-700 w-full h-1 mb-3" />
-        <div className="flex justify-start">
-          <img
-            src={commentIcon}
-            alt="comments"
-            className="h-6 px-1"
-          />
-          <img
-            src={likeImg}
-            alt="Like"
-            className="h-6 px-1"
-            onClick={toggleLike}
-          />
-          <img
-            src={bookImg}
-            alt="Bookmark"
-            className="h-7 px-1"
-            onClick={toggleBook}
-          />
-          <div className="catagory bg-slate-400 px-2 py-1 rounded-lg">
-            {props.category}
-          </div>
         </div>
-        </div>
-        </div>
-        <img src={props.img} alt="Blog Img" className="rounded-3xl w-full lg:min-h-[70%] max-h-72 px-1 lg:px-5" />
       </div>
-
-
+      <img
+        src={props.img}
+        alt="Blog Img"
+        className="rounded-3xl w-full lg:min-h-[70%] max-h-72 px-1 lg:px-5"
+      />
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ import api from "../../api/posts";
 import LoadingPage from "../components/Loading";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useAuth } from "../AuthContext";
 
 const modules = {
   toolbar: [
@@ -35,7 +36,8 @@ const EditBlog = () => {
     const [postData, setPostData] = useState({})
     const handlePageRender = useRef(false)
     const { id } = useParams()
-
+    const { status,  refreshStatus } = useAuth()
+    !status.loggedIn && navigate('/')
     useEffect(() => {
         const getPost = async () => {
             const response = await api.get(`/${id}`)
@@ -152,7 +154,6 @@ const EditBlog = () => {
                                         file:rounded-xl file:border-0
                                         file:text-base file:font-semibold
                                         file:bg-slate-50 file:text-black"
-                                        required
                                 />
                             </label>
                             <button className="text-white bg-black p-2 rounded-md mt-4" type="submit">Update</button>

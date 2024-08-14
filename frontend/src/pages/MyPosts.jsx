@@ -3,15 +3,18 @@ import MyPost from "../components/Mypost";
 import Chatbot from "../components/Chatbot";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import postImg from '../assets/post.png'
 import LoadingPage from '../components/Loading';
 import api from '../../api/posts'
+import { useAuth } from "../AuthContext";
 
 const MyPosts = () => {
+  const { status } = useAuth()
   const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState([])
-  
+  const navigate = useNavigate()
+  !status.loggedIn && navigate('/')
   useEffect(() => {
     const getPosts = async () => {
       const response = await api.get('/my/my')
